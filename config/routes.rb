@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   get '/service', to: 'main#service'
   get '/questions', to: 'main#questions'
   get '/contact', to: 'main#contact'
+  get '/partners', to: 'main#partners'
 end

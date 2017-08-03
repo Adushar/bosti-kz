@@ -7,4 +7,6 @@ class MainController < ApplicationController
   end
   def contact
   end
+  def partners
+  end
 end
