@@ -1,0 +1,57 @@
+<style>
+  h1 {
+    padding-top: 25%;
+  }
+  #ask_qustions {
+    border: 1px solid black;
+    width: 40%;
+    max-height: 70vh;
+    overflow-y: scroll;
+    margin: 2% auto auto 10%;
+  }
+  #ask {
+    margin: 3%;
+  }
+
+  #qustions {margin: 3%}
+
+    #ask_qustions, #tell_story {
+      display: inline-block;
+    }
+
+  #tell_story {
+    position: absolute;
+    margin: 2% auto auto 5% ;
+  }
+
+  #tell_story img {
+      width: 400px;
+      float: right;
+    }
+    input, textarea {
+      width: 100%;
+    }
+</style>
+<div id="main">
+  <h1>Вопросы и ответы</h1>
+  <p>В данном разделе Вы можете задать интересующие Вас вопросы специалистам относительно технических характеристик, сервиса и доставки медицинского оборудования, которое мы поставляем.</p>
+  <div id="ask_qustions">
+    <div id="ask">
+      <input placeholder="Фамилия, имя, отчество" style="width: 100%">
+      <textarea placeholder="Текст вашего сообщения" cols="40" rows="3" style="width: 100%"></textarea>
+      <h5>
+        <input type="submit" value="Отправить">
+        <input type="reset" value="Очистить">
+      </h5>
+    </div>
+    <div id="qustions">
+      <h4>Имя: Lorem ipsum</h4>
+      <p>Вопрос: Lorem lorem ipsum lorem Lorem lorem ipsum lorem Lorem lorem ipsum lorem Lorem lorem ipsum lorem Lorem lorem ipsum lorem Lorem lorem ipsum lorem </p>
+      <p><strong>Ответ: ...</strong></p>
+      <h4>Имя: Lorem ipsum</h4>
+      <p>Вопрос: Lorem lorem ipsum lorem Lorem lorem ipsum lorem Lorem lorem ipsum lorem Lorem lorem ipsum lorem Lorem lorem ipsum lorem Lorem lorem ipsum lorem </p>
+      <p><strong>Ответ: ...</strong></p>
+    </div>
+  </div>
+    <a id="tell_story" href="/contact"><img src="/Tell_your_story.png"></a>
+</div>

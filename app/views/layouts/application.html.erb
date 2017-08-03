@@ -26,5 +26,34 @@
     </nav>
   </header>
     <%= yield %>
+  <footer>
+    <div class="footer-bg">
+      <div class="copyright">
+        <p><strong>Copyright © 2017 BOSTI. All rights reserved</strong></p>
+        <span>Privacy Policy</span>
+        <span>Terms of Use</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript" ></script>
+  <script type="text/javascript">
+      $(document).ready(function(){
+          var touch = $('#touch-menu');
+          var menu = $('.nav');
+
+          $(touch).on('click', function(e) {
+              e.preventDefault();
+              menu.slideToggle();
+          });
+          $(window).resize(function(){
+              var wid = $(window).width();
+              if(wid > 803 && menu.is(':hidden')) {
+                  menu.removeAttr('style');
+              }
+          });
+
+      });
+  </script>
   </body>
 </html>
