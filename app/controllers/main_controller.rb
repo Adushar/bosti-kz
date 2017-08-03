@@ -4,6 +4,7 @@ class MainController < ApplicationController
   def service
   end
   def questions
-
+  end
+  def contact
   end
 end

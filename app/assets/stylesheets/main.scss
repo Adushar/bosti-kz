@@ -1,6 +1,8 @@
 // Place all the styles related to the main controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+ul.nav li a.active {background: red;}
+
 * {
   margin: 0;
   padding: 0;
@@ -9,10 +11,12 @@
   font-size: 25px;
 }
 
-h1 {font-size: 30px;}
-h2 {font-size: 25px;}
-p {font-size: 25px;}
-input, textarea {font-size: 20px;}
+h1 {font-size: 40px;}
+h2 {font-size: 35px;}
+p {font-size: 28px;}
+input, textarea {
+  font-size: 20px;
+}
 
 @font-face {font-family:'PF Din';src: url('/pfdintextcomppro-light.ttf');}
 
@@ -119,8 +123,9 @@ header {
 }
 
 #main {
-  background-color: #FCFCFC;
-  height: 120vh;
+  background: url("/background.jpg");
+  background-attachment: fixed;
+  height: 140vh;
 }
 
 #main h1, h2 {
@@ -148,25 +153,21 @@ header {
   border: 1px solid #2E2F30;
   float: right;
   width: 20%;
-  min-width: 300px;
+  min-width: 400px;
   padding: 1% 2%;
-  margin: 10%;
+  margin: 5%;
 }
 
 .contact_field {
   margin: 2%;
-  width: 243px;
-  max-width: 243px;
-}
-
-#contact_text {
-
+  width: 100%;
+  padding: 2% 3%;
 }
 
 #contact-service h2 {padding: 0 0 2% 0;}
 
 footer {
-  margin-top: -77px; /* Поднимаем вверх */
+  margin-top: -87px; /* Поднимаем вверх */
   overflow: auto; /* Отменяем схлопывающиеся отступы */
   position: relative; /* Относительное позиционирование */
   width: 100%;
