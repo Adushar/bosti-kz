@@ -124,8 +124,9 @@ header {
 }
 
 #main {
-  background: url("/img/background.jpg");
+  background: url("/img/background.png") no-repeat;
   background-attachment: fixed;
+  background-size: 100%;
   height: 140vh;
 }
 

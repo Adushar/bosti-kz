@@ -40,6 +40,6 @@ list.appendChild(mainSVG)
      lineSVG.setAttribute("y2", y2)
      lineSVG.setAttribute("stroke-width", "1")
      lineSVG.setAttribute("stroke", color1)
-     list.appendChild(lineSVG)
    }
+
 };
