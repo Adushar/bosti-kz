@@ -65,12 +65,16 @@
 #SBlock a {
   display: block;
 }
+
+#ssvg, #fsvg, #bottom_menu {
+  display: none;
+}
 </style>
 <link rel="stylesheet" type="text/css" href="css/animate.min.css">
 <div id="main">
   <img id="fimg" src="/img/doctor.png">
-  <div id="fsvg" style="display: none;">
-    <svg id="SVG1" viewBox="0 0 30 90" direction="right"><line x1="0" y1="45" x2="10" y2="45" stroke-width="1" stroke="#3C3C3C"></line><line x1="10" y1="15" x2="10" y2="75" stroke-width="1" stroke="#3C3C3C"></line><g><line x1="10" y1="15" x2="28" y2="15" stroke-width="1" stroke="#3C3C3C"></line><circle cx="28" cy="15" r="2" fill="#3C3C3C"></circle></g><g><line x1="10" y1="45" x2="28" y2="45" stroke-width="1" stroke="#3C3C3C"></line><circle cx="28" cy="45" r="2" fill="#3C3C3C"></circle></g><g><line x1="10" y1="75" x2="28" y2="75" stroke-width="1" stroke="#3C3C3C"></line><circle cx="28" cy="75" r="2" fill="#3C3C3C"></circle></g></svg>
+  <div id="fsvg">
+    <svg id="SVG1" viewBox="0 0 30 90"><line x1="0" y1="45" x2="10" y2="45" stroke-width="1" stroke="#3C3C3C"></line><line x1="10" y1="15" x2="10" y2="75" stroke-width="1" stroke="#3C3C3C"></line><g><line x1="10" y1="15" x2="28" y2="15" stroke-width="1" stroke="#3C3C3C"></line><circle cx="28" cy="15" r="2" fill="#3C3C3C"></circle></g><g><line x1="10" y1="45" x2="28" y2="45" stroke-width="1" stroke="#3C3C3C"></line><circle cx="28" cy="45" r="2" fill="#3C3C3C"></circle></g><g><line x1="10" y1="75" x2="28" y2="75" stroke-width="1" stroke="#3C3C3C"></line><circle cx="28" cy="75" r="2" fill="#3C3C3C"></circle></g></svg>
     <div id="FBlock">
       <a id="TandP">Терапия и продукты</a>
       <a id="NandA">Новости и события</a>
@@ -78,7 +82,7 @@
     </div>
   </div>
   <img id="simg" src="/img/patient.png">
-  <div id="ssvg" style="display: none;">
+  <div id="ssvg">
     <svg id="SVG2" viewBox="0 0 30 180"><line x1="0" y1="75" x2="10" y2="75" stroke-width="1" stroke="#172782"></line><line x1="10" y1="15" x2="10" y2="165" stroke-width="1" stroke="#172782"></line><g><line x1="10" y1="15" x2="28" y2="15" stroke-width="1" stroke="#172782"></line><circle cx="28" cy="15" r="2" fill="#172782"></circle></g><g><line x1="10" y1="45" x2="28" y2="45" stroke-width="1" stroke="#172782"></line><circle cx="28" cy="45" r="2" fill="#172782"></circle></g><g><line x1="10" y1="75" x2="28" y2="75" stroke-width="1" stroke="#172782"></line><circle cx="28" cy="75" r="2" fill="#172782"></circle></g><g><line x1="10" y1="105" x2="28" y2="105" stroke-width="1" stroke="#172782"></line><circle cx="28" cy="105" r="2" fill="#172782"></circle></g><g><line x1="10" y1="135" x2="28" y2="135" stroke-width="1" stroke="#172782"></line><circle cx="28" cy="135" r="2" fill="#172782"></circle></g><g><line x1="10" y1="165" x2="28" y2="165" stroke-width="1" stroke="#172782"></line><circle cx="28" cy="165" r="2" fill="#172782"></circle></g></svg>
     <div id="SBlock">
       <a id="Arm">Аритмология</a>
@@ -89,7 +93,7 @@
       <a id="Perf">Перфузиология</a>
     </div>
   </div>
-  <div id="bottom_menu" style="display: none;">
+  <div id="bottom_menu">
     <h1>Продукты</h1>
     <div id="first">
       <h2>Endurity Core DR двухкамерный кардиостимулятор</h2>

@@ -1,5 +1,4 @@
 fimg.onclick = function() {
-  GSVG("somename", "test", 3, 6, "#fff");
     $("ul.nav li:first-child a").addClass('active');
     $( "#simg" ).hide();
     $('#fimg').css({"padding-left": "10vw", "padding-right": "0"});
@@ -10,14 +9,14 @@ fimg.onclick = function() {
     TandP.onclick = function() {
       $('#main').css("padding-top", "20vh")
       $('#bottom_menu').show(); //видимость нижнего меню
-      $('#ssvg').show();
+      $('#ssvg').css("display", "inline-block");
       $("#main #bottom_menu").addClass('animated zoomInLeft'); //Анимация для нижнего блока
       $("#main #ssvg").addClass('animated zoomInLeft');
       $('#SBlock').show();
     }
   };
 
- function GSVG(SVGname, SVGtarget, SVGtargetnum, SVGnumber, color1) {
+ /* function GSVG(SVGname, SVGtarget, SVGtargetnum, SVGnumber, color1) {
   var list = document.getElementById(SVGtarget) //Поиск div'а
   var mainSVG = document.createElement('svg')  //Создание svg оболочки
   var SVGheight = SVGnumber * 30
@@ -43,3 +42,4 @@ list.appendChild(mainSVG)
    }
 
 };
+*/
