@@ -13,7 +13,7 @@
   padding-right: 30vw;
 }
 
-#fimg, #simg, #fsvg, #ssvg, #SBlock {
+#fimg, #simg, .Nsvg, #SBlock {
   display: inline-block;
 }
 
@@ -21,15 +21,15 @@
   height: 150px;
 }
 
-#SVG1, #SVG2 {
+#SVG1, #SVG2, .SVG {
     width: 30px;
 }
-#SVG1, #FBlock{
+.SVG, .NBlock{
   display: inline-block;
 }
 
 #FBlock {
-  transform: translate(0%, -40%);
+  transform: translate(1%, -40%) !important;
 }
 
 #TandP, #NandA, #EandT {
@@ -43,48 +43,47 @@
   background: #f8f8f8;
 }
 
-#first, #second, .bottom_punct {
+.bottom_punct {
   width: 30vw;
-  height: 50vh;
   display: inline-grid;
-  margin-left: 10%;
+  margin: 1%;
 }
 
 #first img, #second img, .bottom_punct img {
-  width: 30vh;
-  padding-left: 20%
+  width: 250px;
+  padding-left: 20%;
 }
 #first a, #second a, .bottom_punct a {
   font-size: 20px;
 }
 
-#SBlock {
-  transform: translateY(-5%);
+.NBlock {
+  transform: translate(1%, -5%);
 }
 
-#SBlock a {
+#SBlock a, .NBlock a{
   display: block;
 }
 
-#ssvg, #fsvg, #bottom_menu {
+.Nsvg, #bottom_menu {
   display: none;
 }
 </style>
 <link rel="stylesheet" type="text/css" href="css/animate.min.css">
 <div id="main">
   <img id="fimg" src="/img/doctor.png">
-  <div id="fsvg">
-    <svg id="SVG1" viewBox="0 0 30 90"><line x1="0" y1="45" x2="10" y2="45" stroke-width="1" stroke="#3C3C3C"></line><line x1="10" y1="15" x2="10" y2="75" stroke-width="1" stroke="#3C3C3C"></line><g><line x1="10" y1="15" x2="28" y2="15" stroke-width="1" stroke="#3C3C3C"></line><circle cx="28" cy="15" r="2" fill="#3C3C3C"></circle></g><g><line x1="10" y1="45" x2="28" y2="45" stroke-width="1" stroke="#3C3C3C"></line><circle cx="28" cy="45" r="2" fill="#3C3C3C"></circle></g><g><line x1="10" y1="75" x2="28" y2="75" stroke-width="1" stroke="#3C3C3C"></line><circle cx="28" cy="75" r="2" fill="#3C3C3C"></circle></g></svg>
-    <div id="FBlock">
+  <div class="Nsvg" id="fsvg">
+    <svg class="SVG" id="SVG1" viewBox="0 0 30 90"><line x1="0" y1="45" x2="10" y2="45" stroke-width="1" stroke="#3C3C3C"></line><line x1="10" y1="15" x2="10" y2="75" stroke-width="1" stroke="#3C3C3C"></line><g><line x1="10" y1="15" x2="28" y2="15" stroke-width="1" stroke="#3C3C3C"></line><circle cx="28" cy="15" r="2" fill="#3C3C3C"></circle></g><g><line x1="10" y1="45" x2="28" y2="45" stroke-width="1" stroke="#3C3C3C"></line><circle cx="28" cy="45" r="2" fill="#3C3C3C"></circle></g><g><line x1="10" y1="75" x2="28" y2="75" stroke-width="1" stroke="#3C3C3C"></line><circle cx="28" cy="75" r="2" fill="#3C3C3C"></circle></g></svg>
+    <div class="NBlock" id="FBlock">
       <a id="TandP">Терапия и продукты</a>
       <a id="NandA">Новости и события</a>
       <a id="EandT">Образование и тренинги</a>
     </div>
   </div>
   <img id="simg" src="/img/patient.png">
-  <div id="ssvg">
-    <svg id="SVG2" viewBox="0 0 30 180"><line x1="0" y1="75" x2="10" y2="75" stroke-width="1" stroke="#172782"></line><line x1="10" y1="15" x2="10" y2="165" stroke-width="1" stroke="#172782"></line><g><line x1="10" y1="15" x2="28" y2="15" stroke-width="1" stroke="#172782"></line><circle cx="28" cy="15" r="2" fill="#172782"></circle></g><g><line x1="10" y1="45" x2="28" y2="45" stroke-width="1" stroke="#172782"></line><circle cx="28" cy="45" r="2" fill="#172782"></circle></g><g><line x1="10" y1="75" x2="28" y2="75" stroke-width="1" stroke="#172782"></line><circle cx="28" cy="75" r="2" fill="#172782"></circle></g><g><line x1="10" y1="105" x2="28" y2="105" stroke-width="1" stroke="#172782"></line><circle cx="28" cy="105" r="2" fill="#172782"></circle></g><g><line x1="10" y1="135" x2="28" y2="135" stroke-width="1" stroke="#172782"></line><circle cx="28" cy="135" r="2" fill="#172782"></circle></g><g><line x1="10" y1="165" x2="28" y2="165" stroke-width="1" stroke="#172782"></line><circle cx="28" cy="165" r="2" fill="#172782"></circle></g></svg>
-    <div id="SBlock">
+  <div class="Nsvg" id="ssvg">
+    <svg class="SVG" id="SVG2" viewBox="0 0 30 180"><line x1="0" y1="75" x2="10" y2="75" stroke-width="1" stroke="#172782"></line><line x1="10" y1="15" x2="10" y2="165" stroke-width="1" stroke="#172782"></line><g><line x1="10" y1="15" x2="28" y2="15" stroke-width="1" stroke="#172782"></line><circle cx="28" cy="15" r="2" fill="#172782"></circle></g><g><line x1="10" y1="45" x2="28" y2="45" stroke-width="1" stroke="#172782"></line><circle cx="28" cy="45" r="2" fill="#172782"></circle></g><g><line x1="10" y1="75" x2="28" y2="75" stroke-width="1" stroke="#172782"></line><circle cx="28" cy="75" r="2" fill="#172782"></circle></g><g><line x1="10" y1="105" x2="28" y2="105" stroke-width="1" stroke="#172782"></line><circle cx="28" cy="105" r="2" fill="#172782"></circle></g><g><line x1="10" y1="135" x2="28" y2="135" stroke-width="1" stroke="#172782"></line><circle cx="28" cy="135" r="2" fill="#172782"></circle></g><g><line x1="10" y1="165" x2="28" y2="165" stroke-width="1" stroke="#172782"></line><circle cx="28" cy="165" r="2" fill="#172782"></circle></g></svg>
+    <div class="NBlock" id="SBlock">
       <a id="Arm">Аритмология</a>
       <a id="Card">Кардиохирургия</a>
       <a id="Elec">Электрофизиология</a>
@@ -93,6 +92,9 @@
       <a id="Perf">Перфузиология</a>
     </div>
   </div>
+  <div class="Nsvg" id="tsvg">
+
+  </div>
   <div id="bottom_menu">
     <h1>Продукты</h1>
     <div class="bottom_punct" id="first">
@@ -100,7 +102,7 @@
       <img src="https://bosti.s3.amazonaws.com/system/image/image/17/medium_pic.jpg">
       <a><br>The Endurity™ pacemaker offers exceptional longevity in a small device size and a physiologic physician-preferred shape enabling a smaller incision and pocket size.</a>
     </div>
-    <div class="bottom_puct" id="second">
+    <div class="bottom_punct" id="second">
       <h2>Endurity Core SR однокамерный кардиостимулятор</h2>
       <img src="https://bosti.s3.amazonaws.com/system/image/image/16/medium_pic.jpg">
       <a><br>К наиболее значимым характеристикам кардиостимуляторов St. Jude Medical относятся: долговечность, отсутствие нежелательной стимуляции правого желудочка, расширенная автоматизация, включая диагностику. Так...</a>
