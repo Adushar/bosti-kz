@@ -118,6 +118,13 @@
       <img src="https://bosti.s3.amazonaws.com/system/image/image/12/medium_pic.jpg">
       <a><br>The SJM Regent™ mechanical heart valve is the most widely implanted mechanical valve in the world. More than two million St. Jude Medical™ mechanical valves have been implanted worldwide, and the SJM Rege...</a>
     </div>
+    <% @articles.each do |article| %>
+    <div class="bottom_punct">
+      <h2><%= article.topic %></h2>
+      <img src=<%= article.img %>>
+      <a><br><%= article.description %></a>
+    </div>
+    <% end %>
   </div>
 </div>
 

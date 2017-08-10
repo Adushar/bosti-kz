@@ -1,9 +1,9 @@
 fimg.onclick = function Doctor() {
-    $("ul.nav li:first-child a").addClass('active');
     $( "#simg" ).hide();
     $('#fimg').css({"padding-left": "5vw", "padding-right": "0"});
     $('#main').css({"text-align": "inherit", "padding-top": "25vh", "height": "124vh"});
     $('#fsvg').css("display", "inline-block");
+    $("ul.nav li:first-child a").addClass('active');
     $("#main #fsvg").addClass('animated fadInLeft'); //Анимация для нижнего блока
 
     TandP.onclick = function() {
