@@ -33,7 +33,7 @@ fimg.onclick = function Doctor() {
     Neir.onclick = function() {
       tsvg.innerHTML = '<svg class="SVG" id="SVG2" viewBox="0 0 30 180"><line x1="0" y1="135" x2="10" y2="135" stroke-width="1" stroke="#172782"></line><line x1="10" y1="15" x2="10" y2="135" stroke-width="1" stroke="#172782"></line><g><line x1="10" y1="15" x2="28" y2="15" stroke-width="1" stroke="#172782"></line><circle cx="28" cy="15" r="2" fill="#172782"></circle></g><g><line x1="10" y1="75" x2="28" y2="75" stroke-width="1" stroke="#172782"></line><circle cx="28" cy="75" r="2" fill="#172782"></circle></g><g><line x1="10" y1="135" x2="28" y2="135" stroke-width="1" stroke="#172782"></line><circle cx="28" cy="135" r="2" fill="#172782"></circle></g></svg><div class="NBlock" id="TBlock"><a>Эпидуральная электростимуляция<br> спинного мозга (SCS)</a><a>Электростимуляция глубинных<br> структур головного мозга (DBS)</a><a>Шунтирующие системы, наружные дренажи, вентрикулярные<br> резервуары и мониторинг ВЧД</a></div>'
       $('#tsvg').css("display", "inline-block");
-      $('#tsvg').css("transform", "translate(1%, -20%)");
+      $('#tsvg').css("transform", "translate(1%, -15%)");
       $('#tsvg').css("margin-top", "2%");
     }
     Rant.onclick = function() {
