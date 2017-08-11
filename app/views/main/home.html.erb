@@ -93,12 +93,12 @@
       <a id="Arm">Аритмология</a>
       <a id="Card">Кардиохирургия</a>
       <a id="Elec">Электрофизиология</a>
-      <a id="Neir">Нейрохирургия</a>
+      <a id="Neir" onclick="document.getElementById("tsvg").style.margin = "none";">Нейрохирургия</a>
       <a id="Rant">Рентгеноэндоваскулярная хирургия</a>
       <a id="Perf">Перфузиология</a>
     </div>
   </div>
-  <div class="Nsvg" id="tsvg">
+  <div class="Nsvg" id="tsvg" style="padding-top: 2.5%;">
 
   </div>
   <div id="bottom_menu">
@@ -128,4 +128,13 @@
   </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript" ></script>
-<script src="/js/main.js"></script>
+<script src="/js/main.js.erb"></script>
+<script>
+function setLocation(curLoc){
+    try {
+      history.pushState(null, null, curLoc);
+      return;
+    } catch(e) {}
+    location.hash = '#' + curLoc;
+}
+</script>
