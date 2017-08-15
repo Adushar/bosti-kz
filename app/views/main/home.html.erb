@@ -103,30 +103,38 @@
   </div>
   <div id="bottom_menu">
     <h1>Продукты</h1>
-    <div class="bottom_punct" id="first">
-      <h2>Endurity Core DR двухкамерный кардиостимулятор</h2>
-      <img src="https://bosti.s3.amazonaws.com/system/image/image/17/medium_pic.jpg">
-      <a><br>The Endurity™ pacemaker offers exceptional longevity in a small device size and a physiologic physician-preferred shape enabling a smaller incision and pocket size.</a>
-    </div>
-    <div class="bottom_punct" id="second">
-      <h2>Endurity Core SR однокамерный кардиостимулятор</h2>
-      <img src="https://bosti.s3.amazonaws.com/system/image/image/16/medium_pic.jpg">
-      <a><br>К наиболее значимым характеристикам кардиостимуляторов St. Jude Medical относятся: долговечность, отсутствие нежелательной стимуляции правого желудочка, расширенная автоматизация, включая диагностику. Так...</a>
-    </div>
-    <div class="bottom_punct">
-      <h2>Аортальный клапан Regent</h2>
-      <img src="https://bosti.s3.amazonaws.com/system/image/image/12/medium_pic.jpg">
-      <a><br>The SJM Regent™ mechanical heart valve is the most widely implanted mechanical valve in the world. More than two million St. Jude Medical™ mechanical valves have been implanted worldwide, and the SJM Rege...</a>
-    </div>
-    <% @articles.each do |article| %>
-    <div class="bottom_punct">
-      <div id="text_to_be_changed"></div>
-      <h2><%= article.topic %></h2>
-      <img src=<%= article.img %>>
-      <a><br><%= article.description %></a>
-    </div>
-    <% end %>
+
   </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript" ></script>
 <script src="/js/main.js.erb"></script>
+<script>
+window.onload = ReturnOpened1();
+//Getting url data
+function getUrlParameter(sParam) {
+    var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+        sURLVariables = sPageURL.split('&'),
+        sParameterName,
+        i;
+
+    for (i = 0; i < sURLVariables.length; i++) {
+        sParameterName = sURLVariables[i].split('=');
+
+        if (sParameterName[0] === sParam) {
+            return sParameterName[1] === undefined ? true : sParameterName[1];
+        }
+    }
+};
+function ReturnOpened1() {
+  var targetId = getUrlParameter('id');
+  //.indexOf("c")
+  bottom_menu.innerHTML = '<% @articles.each do |article| %><div class="bottom_punct"><%= article.html.html_safe %></div><% end %>'
+  //ImitationClick(targetId);
+}
+
+$( ".Nsvg" ).click(function ReturnOpened() {
+  var targetId = getUrlParameter('id');
+  //bottom_menu.innerHTML = '<h1>123</h1>'
+  //ImitationClick(targetId);
+});
+</script>
