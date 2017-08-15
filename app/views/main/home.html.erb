@@ -128,7 +128,7 @@ function getUrlParameter(sParam) {
 function ReturnOpened1() {
   var targetId = getUrlParameter('id');
   //.indexOf("c")
-  bottom_menu.innerHTML = '<% @articles.each do |article| %><div class="bottom_punct"><%= article.html.html_safe %></div><% end %>'
+  bottom_menu.innerHTML = '<% @articles.each do |article| %><div class="bottom_punct"><%= article.html.to_s.html_safe %></div><% end %>'
   //ImitationClick(targetId);
 }
 
