@@ -1,7 +1,7 @@
 class MainController < ApplicationController
   def home
-    @articles = Article.all
-    @id = params[:id]
+    #@articles = Article.all
+    #@id = params[:id]
   end
   def service
   end
