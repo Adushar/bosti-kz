@@ -163,7 +163,7 @@ function ReturnOpened1() {
   var css = `<% @articles.each do |article| %><%= simple_format(article.css.html_safe) %><% end %>`;
   //.indexOf("c")
   bottom_menu.innerHTML += `<% @articles.each do |article| %><div class="bottom_punct"><%= simple_format(article.html.html_safe) %></div><% end %>`;
-  style.innerHTML += css.replace(/<br\s*\/?>/gi,'').replace(/<\/p>/gm, "");
+  style.innerHTML += css.replace(/<br\s*\/?>/gi,'').replace(/<\/p>/gm, "").replace(/<\p>/gm, "");
   //ImitationClick(targetId);
 }
 
