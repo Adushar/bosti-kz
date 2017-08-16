@@ -182,15 +182,13 @@ header {
 
 #contact-service h2 {padding: 0 0 2% 0;}
 
-footer {
-  margin-top: -87px; /* Поднимаем вверх */
+footer { /* Поднимаем вверх */
   overflow: auto; /* Отменяем схлопывающиеся отступы */
   position: relative; /* Относительное позиционирование */
   width: 100%;
 }
 .footer-bg {
-  background: #2E2F30; /* Цвет фона подвала */
-  margin-top: 80px; /* Сдвигаем вниз */
+  background: #2E2F30; /* Цвет фона подвала */ /* Сдвигаем вниз */
 }
 .copyright {
   width: 740px; /* Ширина макета без полей */
