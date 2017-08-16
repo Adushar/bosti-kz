@@ -1,12 +1,12 @@
 <style>
 #main {
-  background: white;
+  padding-bottom: 10vh;
   height: auto;
 }
 
 #partners {
   text-align: center;
-  margin: auto;
+  margin: 4vh auto;
 }
 
   .partners-sites {
@@ -17,21 +17,30 @@
   .partners-sites:hover {
     -webkit-filter: grayscale(0%);
   }
-  #cookmedical {
+  #cookmedical, #xenios {
     width: 12vw;
   }
   .part img, .part p {
     display: inline-block;
   }
-  .partners-about {
-    width: 300px;
-    padding-left: 5vh;
-    float: left;
-  }
+
+  .part img, #about-partners tr th {text-align: center;}
+
   .part p {
     width: 70%;
     float: right;
   }
+
+  .partners-about {
+    width: 300px;
+    padding-left: 20px;
+  }
+
+  #about-partners {
+    margin: 4vh auto 0 auto;
+  }
+
+  #about-partners, #partners {background: white;}
 </style>
 
   <h1>Партнерам</h1>
@@ -41,7 +50,7 @@
   <td><a href="www.abbott.com/"><img class="partners-sites" src="/img/abbott.png"></a></td>
   <td><a href="https://www.biotronik.com/"><img class="partners-sites" src="/img/biotronik.png"></a></td>
   <td><a href="https://www.sjm.com/"><img class="partners-sites" src="/img/SJM.png"></a></td>
-  <td><a href="https://www.xeniosusa.com/"><img class="partners-sites" src="/img/xenios.png"></a></td>
+  <td><a href="https://www.xeniosusa.com/"><img id="xenios" class="partners-sites" src="/img/xenios.png"></a></td>
 </tr>
 <tr>
   <td><a href="http://medos.com.ua/"><img class="partners-sites" src="/img/medos.png"></a></td>
@@ -50,7 +59,7 @@
   <td><a href="https://www.cookmedical.com/"><img id="cookmedical" class="partners-sites" src="/img/cookmedical.png"></a></td>
 </tr>
   <div id="about">
-    <table width="98%" cellpadding="5">
+    <table id="about-partners" width="98%" cellpadding="5">
       <tr>
         <div class="part">
           <th><img class="partners-about" src="/img/abbott.png"></th>
@@ -72,7 +81,7 @@
       </tr>
       <tr>
       <div class="part">
-        <th><img class="partners-about" src="/img/xenios.png"></th>
+        <th><img class="partners-about" src="/img/xenios.png" style="width: 15vw;"></th>
         <th><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse pellentesque varius vehicula. In non neque orci. Proin lacinia id nulla id tempor. Sed auctor orci nunc, ac efficitur sapien iaculis ac. Morbi sit amet varius mi, et ullamcorper augue. Phasellus iaculis fringilla nulla eu semper. Duis vehicula nisl eu erat blandit interdum. Proin sit amet sapien leo. Cras sit amet ullamcorper nisi. Praesent interdum dapibus tellus vel maximus. Duis eros magna, tempor at libero vel, imperdiet congue libero. Integer diam mi, mollis a porttitor ac, vestibulum sit amet turpis. Cras placerat dolor in nisi hendrerit finibus</p></th>
       </div>
     </tr>

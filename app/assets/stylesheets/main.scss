@@ -42,7 +42,10 @@ header ul {list-style: none;}
   box-sizing: border-box;
 }
 
-.logo img {height: 44px;}
+.logo img {
+  height: 35px;
+  vertical-align: middle;
+}
 
 a, a:hover {text-decoration: none;}
 
@@ -156,39 +159,13 @@ header {
   padding-left: 10%;
 }
 
-#what_we_do {
-  float: left;
-  width: 45%;
-  margin-left: 10%;
-}
-
-#what_we_do, #contact-service, #what_we_do h2, #contact-service h2 {display: inline-block}
-
-#contact-service {
-  border: 1px solid #2E2F30;
-  float: right;
-  width: 20%;
-  min-width: 400px;
-  padding: 1% 2%;
-  margin: 5%;
-}
-
-.contact_field {
-  margin: 2%;
-  width: 100%;
-  padding: 2% 3%;
-}
-
-#contact-service h2 {padding: 0 0 2% 0;}
-
 footer { /* Поднимаем вверх */
   overflow: auto; /* Отменяем схлопывающиеся отступы */
   position: relative; /* Относительное позиционирование */
   width: 100%;
+  background: #2E2F30;
 }
-.footer-bg {
-  background: #2E2F30; /* Цвет фона подвала */ /* Сдвигаем вниз */
-}
+
 .copyright {
   width: 740px; /* Ширина макета без полей */
   padding: 0 10px 10px; /* Поля */

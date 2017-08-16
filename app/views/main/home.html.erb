@@ -25,14 +25,14 @@
 #fimg img, #simg img {
     box-shadow: 0 0 10px rgba(0,0,0,0.5);
     border-radius: 100%;
+    cursor: pointer
 }
 
-#fimg, #simg, #mimg {
-  display: inline-block;
+#fimg, #simg, #mimg, #fsvg {
   vertical-align: middle;
 }
 
-.Nsvg, #SBlock {
+#fimg, #simg, #mimg, .Nsvg, #SBlock {
   display: inline-block;
 }
 
@@ -55,6 +55,10 @@
   display: block;
 }
 #fsvg ul li {text-decoration: none;}
+
+#ssvg, #tsvg {
+  vertical-align: middle;
+}
 
 #bottom_menu {
   width: 100%;
@@ -94,7 +98,7 @@
 
   <div id="fimg">
     <img src="/img/doctor.png">
-    <figcaption>Докторам</figcaption>
+    <figcaption style="text-align: center;">Докторам</figcaption>
   </div>
   <div class="Nsvg" id="fsvg">
     <svg class="SVG" id="SVG1" viewBox="0 0 30 90"><line x1="0" y1="45" x2="10" y2="45" stroke-width="1" stroke="#3C3C3C"></line><line x1="10" y1="15" x2="10" y2="75" stroke-width="1" stroke="#3C3C3C"></line><g><line x1="10" y1="15" x2="28" y2="15" stroke-width="1" stroke="#3C3C3C"></line><circle cx="28" cy="15" r="2" fill="#3C3C3C"></circle></g><g><line x1="10" y1="45" x2="28" y2="45" stroke-width="1" stroke="#3C3C3C"></line><circle cx="28" cy="45" r="2" fill="#3C3C3C"></circle></g><g><line x1="10" y1="75" x2="28" y2="75" stroke-width="1" stroke="#3C3C3C"></line><circle cx="28" cy="75" r="2" fill="#3C3C3C"></circle></g></svg>
