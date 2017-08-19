@@ -1,6 +1,13 @@
 class MainController < ApplicationController
   def home
     @articles = Article.all
+    articles = @articles.where(params[:id])
+    respond_to do |format|
+      format.html
+      format.json {
+        render json: articles
+      }
+    end
     @id = params[:id]
   end
   def service
