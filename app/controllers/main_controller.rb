@@ -8,7 +8,6 @@ class MainController < ApplicationController
         render json: articles
       }
     end
-    @id = params[:id]
   end
   def service
   end
