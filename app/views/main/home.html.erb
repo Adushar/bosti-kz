@@ -79,13 +79,13 @@ figcaption {
   width: 30vw;
   display: inline-table;
   margin: 1%;
+  text-align: center;
 }
 
 .bottom_punct h2, .bottom_punct p {text-align: center;}
 
 #first img, #second img, .bottom_punct img {
-  width: 250px;
-  padding-left: 20%;
+  width: 350px;
 }
 #first a, #second a, .bottom_punct a {
   font-size: 20px;
@@ -311,6 +311,15 @@ $( ".npn" ).click(function() {
 UpdateAjax(this.id);
 }
 
+
+//-----------------------------------------------
+function ClickReview(IdOfTarget) {
+
+}
+//-----------------------------------------------
+
+
+
 function UpdateAjax(id) {
   var current_id = id;
   $.ajax({
@@ -325,7 +334,7 @@ function UpdateAjax(id) {
           $('#bottom_menu').html(htmlDef);
           $.each( data, function( i, val ) {
             if (val.htmltarget == current_id) {
-            bottom_menu.innerHTML += `<div class="bottom_punct">` + val.html + `</div>`;
+            bottom_menu.innerHTML += `<a onclick="ClickReview(`+ val.review_id + `)"><div class="bottom_punct">` + val.html + `</div></a>`;
             style.innerHTML += val.css.replace(/<br\s*\/?>/gi,'').replace(/<\/p>/gm, "").replace(/<\p>/gm, "");
           }
         });
@@ -336,6 +345,4 @@ function UpdateAjax(id) {
 }
 
 //------------------------------------------------------------------------------------------
-
-
 </script>
