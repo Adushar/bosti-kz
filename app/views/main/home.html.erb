@@ -25,6 +25,7 @@ figcaption {
 #mimg img {
   color: #eee;
   height: 120px;
+  margin-top: -0.625em;
 }
 
 #fimg img, #simg img {
@@ -37,7 +38,7 @@ figcaption {
   vertical-align: middle;
 }
 
-#fimg, #simg, #mimg, .Nsvg, #SBlock {
+#fimg, #simg, #mimg, .Nsvg, #SBlock, #TWOsvg {
   display: inline-block;
 }
 
@@ -48,8 +49,9 @@ figcaption {
 #SVG1, #SVG2, .SVG {
     width: 30px;
 }
-.SVG, .NBlock{
+.SVG, .NBlock, #simg img{
   display: inline-block;
+  margin: auto 3px;
 }
 
 #FBlock {
@@ -67,9 +69,10 @@ figcaption {
 
 #bottom_menu {
   width: 100%;
-  height: 80vh;
   min-height: 60vh;
+  margin-top: 2%;
   background: #f8f8f8;
+  text-align: left;
 }
 
 .bottom_punct {
@@ -77,6 +80,8 @@ figcaption {
   display: inline-table;
   margin: 1%;
 }
+
+.bottom_punct h2, .bottom_punct p {text-align: center;}
 
 #first img, #second img, .bottom_punct img {
   width: 250px;
@@ -95,7 +100,12 @@ figcaption {
   cursor: pointer
 }
 
-.Nsvg, #bottom_menu {
+#ForBlock, #SVGBlock {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.Nsvg, #bottom_menu, #TWOsvg {
   display: none;
 }
 </style>
@@ -114,6 +124,11 @@ figcaption {
     </div>
   </div>
   <div id="mimg"><img src="/img/bosti.svg"></div>
+  <div id="TWOsvg">
+    <div class="NBlock" id="ForBlock">
+      <a class="npn" onclick="UpdateAjax(this.id)" id="Aritm">Лечение аритмии</a>
+    </div>
+    <svg id="SVGBlock" class="SVG animated slideInLeft" viewBox="0 0 30 30" direction="left"><line x1="0" y1="15" x2="10" y2="15" stroke-width="1" stroke="#3C3C3C"></line><line x1="10" y1="15" x2="10" y2="15" stroke-width="1" stroke="#3C3C3C"></line><g><line x1="10" y1="15" x2="28" y2="15" stroke-width="1" stroke="#3C3C3C"></line><circle cx="28" cy="15" r="2" fill="#3C3C3C"></circle></g></svg></div>
   <div id="simg">
     <img src="/img/patient.png">
     <figcaption>Пациентам</figcaption>
@@ -138,7 +153,6 @@ figcaption {
   </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript" ></script>
-<script src="/js/main.js.erb"></script>
 <script>
 var styleDef = $('#style').html();
 var htmlDef = $('#bottom_menu').html();
@@ -146,9 +160,10 @@ var htmlDef = $('#bottom_menu').html();
 fimg.onclick = function Doctor() {
     $( "#simg" ).hide();
     $( "#mimg" ).hide();
-    $('#fimg').css({"padding-left": "5vw", "padding-right": "0"});
+    $('#fimg').css({"padding-left": "5vw", "padding-right": "15px"});
     $('#main').css({"text-align": "inherit", "padding-top": "25vh", "height": "124vh"});
     $('#fsvg').css("display", "inline-block");
+    $("ul.nav li:nth-child(2) a").removeClass( "active" )
     $("ul.nav li:first-child a").addClass('active');
     $("#main #fsvg").addClass('animated fadInLeft'); //Анимация для нижнего блока
     //Hide some menu elements
@@ -162,6 +177,26 @@ fimg.onclick = function Doctor() {
     });
     UpdateAjax(this.id);
   };
+
+  simg.onclick  = function() {
+    $("ul.nav li:nth-child(1) a").removeClass( "active" )
+    $("ul.nav li:nth-child(2) a").addClass('active');
+    $( "#fimg" ).hide();
+    $( "#mimg" ).hide();
+    $('#TWOsvg').css({"display": "inline-block"});
+    $('#main').css({"text-align": "right", "height": "auto"});
+    $('#simg').css({"padding-right": "5vw", "padding-left": "15px"});
+  };
+
+Aritm.onclick = function() {
+  alert(1);
+  $('#main').css("padding-top", "20vh");
+  $("#main #bottom_menu").addClass('animated fadeInUp');
+  $('#bottom_menu').show();
+  document.getElementById("tsvg").style.paddingTop = "4%";
+  document.getElementById("tsvg").style.marginBottom = "12px";
+UpdateAjax(this.id);
+}
 
   TandP.onclick = function() {
     $('#main').css("padding-top", "20vh")
@@ -206,7 +241,7 @@ Arm.onclick = function() {
   $('#tsvg').css({"display": "inline-block", "vertical-align": "top"});
   $('#tsvg').css("transform", "translate(1%, -20%)");
   $("#tsvg").addClass('animated slideInLeft');
-  $('#fimg').css("margin-top", "5%");
+  $('#fimg').css("margin-top", "2%");
   $( ".npn" ).click(function() {
      //window.location.search = '?id=' + this.id;
   });
@@ -220,7 +255,7 @@ Card.onclick = function Card() {
   $('#tsvg').css({"display": "inline-block", "vertical-align": "top"});
   $('#tsvg').css("transform", "translate(1%, -20%)");
   $("#tsvg").addClass('animated slideInLeft');
-  $('#fimg').css("margin-top", "5%");
+  $('#fimg').css("margin-top", "2%");
   $( ".npn" ).click(function() {
      window.location.search = '?id=' + this.id;
   });
@@ -232,7 +267,7 @@ Elec.onclick = function() {
 tsvg.innerHTML = '<svg class="SVG animated slideInLeft"" viewBox="0 0 30 150" direction="right"><line x1="0" y1="75" x2="10" y2="75" stroke-width="1" stroke="#b322b3"></line><line x1="10" y1="15" x2="10" y2="135" stroke-width="1" stroke="#b322b3"></line><g><line x1="10" y1="15" x2="28" y2="15" stroke-width="1" stroke="#b322b3"></line><circle cx="28" cy="15" r="2" fill="#b322b3"></circle></g><g><line x1="10" y1="45" x2="28" y2="45" stroke-width="1" stroke="#b322b3"></line><circle cx="28" cy="45" r="2" fill="#b322b3"></circle></g><g><line x1="10" y1="75" x2="28" y2="75" stroke-width="1" stroke="#b322b3"></line><circle cx="28" cy="75" r="2" fill="#b322b3"></circle></g><g><line x1="10" y1="105" x2="28" y2="105" stroke-width="1" stroke="#b322b3"></line><circle cx="28" cy="105" r="2" fill="#b322b3"></circle></g><g><line x1="10" y1="135" x2="28" y2="135" stroke-width="1" stroke="#b322b3"></line><circle cx="28" cy="135" r="2" fill="#b322b3"></circle></g></svg><div class="NBlock" id="TBlock"><a class="npn" onclick="UpdateAjax(this.id)" id="e1">Диагностические катетеры</a><a class="npn" onclick="UpdateAjax(this.id)" id="e2">Аблационные катетеры</a><a class="npn" onclick="UpdateAjax(this.id)" id="e3">Оборудование для ЭФИ и РЧА</a><a class="npn" onclick="UpdateAjax(this.id)" id="e4">3D картирование сердца</a><a class="npn" onclick="UpdateAjax(this.id)" id="e5">Аксессуары для ЭФИ SJM</a></div>'
 $('#tsvg').css({"display": "inline-block", "vertical-align": "top"});
 $('#tsvg').css("transform", "translate(1%, -20%)");
-$('#fimg').css("margin-top", "5%");
+$('#fimg').css("margin-top", "2%");
 $("#tsvg").addClass('animated slideInLeft');
 $( ".npn" ).click(function() {
    window.location.search = '?id=' + this.id;
@@ -246,7 +281,7 @@ tsvg.innerHTML = '<svg class="SVG animated slideInLeft"" id="SVG2" viewBox="0 0 
 $('#tsvg').css({"display": "inline-block", "vertical-align": "top"});
 $('#tsvg').css("transform", "translate(1%, -15%)");
 $("#tsvg").addClass('animated slideInLeft');
-$('#fimg').css("margin-top", "5%");
+$('#fimg').css("margin-top", "2%");
 $( ".npn" ).click(function() {
    window.location.search = '?id=' + this.id;
 });
@@ -258,7 +293,7 @@ Rant.onclick = function() {
 tsvg.innerHTML = '<svg class="SVG animated slideInLeft"" viewBox="0 0 30 215" direction="right"><line x1="0" y1="165" x2="10" y2="165" stroke-width="1" stroke="#0f0f0f"></line><line x1="10" y1="15" x2="10" y2="200" stroke-width="1" stroke="#0f0f0f"></line><g><line x1="10" y1="15" x2="28" y2="15" stroke-width="1" stroke="#0f0f0f"></line><circle cx="28" cy="15" r="2" fill="#0f0f0f"></circle></g><g><line x1="10" y1="45" x2="28" y2="45" stroke-width="1" stroke="#0f0f0f"></line><circle cx="28" cy="45" r="2" fill="#0f0f0f"></circle></g><g><line x1="10" y1="75" x2="28" y2="75" stroke-width="1" stroke="#0f0f0f"></line><circle cx="28" cy="75" r="2" fill="#0f0f0f"></circle></g><g><line x1="10" y1="105" x2="28" y2="105" stroke-width="1" stroke="#0f0f0f"></line><circle cx="28" cy="105" r="2" fill="#0f0f0f"></circle></g><g><line x1="10" y1="165" x2="28" y2="165" stroke-width="1" stroke="#0f0f0f"></line><circle cx="28" cy="165" r="2" fill="#0f0f0f"></circle></g><g><line x1="10" y1="200" x2="28" y2="200" stroke-width="1" stroke="#0f0f0f"></line><circle cx="28" cy="200" r="2" fill="#0f0f0f"></circle></g></svg><div class="NBlock" id="TBlock"><a class="npn" onclick="UpdateAjax(this.id)" id="r1">Визуализация сосудов сердца - OCT</a><a class="npn" onclick="UpdateAjax(this.id)" id="r2">Внутрисердечные и сосудистые окклюдеры Amplatzer</a><a class="npn" onclick="UpdateAjax(this.id)" id="r3">Измерение внутрисосудистогов давления - FFR</a><a class="npn" onclick="UpdateAjax(this.id)" id="r4">Инструменты для периферической <br>ангиопластики и стентирования</a><a class="npn" onclick="UpdateAjax(this.id)" id="r5">Аксессуары для коронарографий</a><a class="npn" onclick="UpdateAjax(this.id)" id="r6">Инструменты для коронарной ангиопластики и стентирования</a></div>'
 $('#tsvg').css({"display": "inline-block", "vertical-align": "bottom"});
 $('#tsvg').css("transform", "translate(1%, 2%)");
-$('#fimg').css("margin-top", "5%");
+$('#fimg').css("margin-top", "2%");
 $( ".npn" ).click(function() {
    window.location.search = '?id=' + this.id;
 });
@@ -270,7 +305,7 @@ Perf.onclick = function() {
 tsvg.innerHTML = '<svg class="SVG animated slideInLeft"" viewBox="0 0 30 150" direction="right"><line x1="0" y1="135" x2="10" y2="135" stroke-width="1" stroke="#0f0f0f"></line><line x1="10" y1="15" x2="10" y2="135" stroke-width="1" stroke="#0f0f0f"></line><g><line x1="10" y1="15" x2="28" y2="15" stroke-width="1" stroke="#0f0f0f"></line><circle cx="28" cy="15" r="2" fill="#0f0f0f"></circle></g><g><line x1="10" y1="45" x2="28" y2="45" stroke-width="1" stroke="#0f0f0f"></line><circle cx="28" cy="45" r="2" fill="#0f0f0f"></circle></g><g><line x1="10" y1="75" x2="28" y2="75" stroke-width="1" stroke="#0f0f0f"></line><circle cx="28" cy="75" r="2" fill="#0f0f0f"></circle></g><g><line x1="10" y1="105" x2="28" y2="105" stroke-width="1" stroke="#0f0f0f"></line><circle cx="28" cy="105" r="2" fill="#0f0f0f"></circle></g><g><line x1="10" y1="135" x2="28" y2="135" stroke-width="1" stroke="#0f0f0f"></line><circle cx="28" cy="135" r="2" fill="#0f0f0f"></circle></g></svg><div class="NBlock" id="TBlock"><a class="npn" onclick="UpdateAjax(this.id)" id="p1">Наборы для гемофильтрации</a><a class="npn" onclick="UpdateAjax(this.id)" id="p2">Наборы для кардиоплегии</a><a class="npn" onclick="UpdateAjax(this.id)" id="p3">Оксигенаторы</a><a class="npn" onclick="UpdateAjax(this.id)" id="p4">Канюли</a><a class="npn" onclick="UpdateAjax(this.id)" id="p5">ЭКМО</a></div>'
 $('#tsvg').css({"display": "inline-block", "vertical-align": "bottom"});
 $('#tsvg').css("transform", "translate(1%, 2%)");
-$('#fimg').css("margin-top", "5%");
+$('#fimg').css("margin-top", "2%");
 $( ".npn" ).click(function() {
    //window.location.search = '?id=' + this.id;
 });
