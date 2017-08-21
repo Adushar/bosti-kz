@@ -1,11 +1,13 @@
 class MainController < ApplicationController
   def home
+    i = 0
     @articles = Article.all
     articles = @articles.where(params[:id])
+    @reviews = Review.all
     respond_to do |format|
       format.html
       format.json {
-        render json: articles
+        render json: {all_data: {articles: articles, reviews: @reviews}}
       }
     end
   end
