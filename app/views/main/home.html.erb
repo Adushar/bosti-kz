@@ -127,8 +127,6 @@ figcaption {
   display: inline-block;
 }
 
-.bottom_review p, sub, .bottom_review h2 {color: white;}
-
 .bottom_review sub {
   font-size: 20px;
   display: block;
@@ -153,6 +151,29 @@ figcaption {
 .review_left, .review_right {
   display: inline-block;
   vertical-align: top;
+}
+
+.big {
+  width: 100%;
+}
+.med {
+  width: 30%;
+}
+.pad {margin-right: 4%;}
+
+.review_left center {margin: 5%}
+
+#downloadPDF {
+  background: white;
+  border: 2px solid black;
+  padding: 1% 2%;
+  margin-bottom: 5%;
+  border-radius: 5px;
+  color: black;
+}
+#downloadPDF:hover {
+  background: black;
+  color: white;
 }
 /* End of review */
 </style>
@@ -199,6 +220,7 @@ figcaption {
 
   </div>
 
+<script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript" ></script>
 <script>
 var styleDef = $('#style').html();
@@ -368,6 +390,7 @@ function ClickReview(IdOfTarget) {
       if (val.id == IdOfTarget) {
         bottom_menu.innerHTML += `<div class="bottom_review">` + val.html + `</div>`;
         RenderReview();
+        $( ".review_left" ).append( `<center><a id="downloadPDF" href="` + val.downloadLink + `" target="_blank" download="'>">Скачать PDF</a></center>` );
         style.innerHTML += val.css.replace(/<br\s*\/?>/gi,'').replace(/<\/p>/gm, "").replace(/<\p>/gm, "");
       }
     });
@@ -375,8 +398,6 @@ function ClickReview(IdOfTarget) {
 
 function RenderReview() {
   $(`<a id="close_svg"><svg height="30" width="30"><line stroke-width="5" x1="0" y1="0" stroke="#3096b8" x2="30" y2="30"></line><line stroke-width="5" x2="0" y1="0" stroke="#3096b8" x1="30" y2="30"></line></svg></a>`).insertBefore( ".review_left" );
-  $('#bottom_menu').css({"background": "#2E2F30"});
-  $( `<div class="review_right"><a>обзор</a><a>предписания</a><div id="under">225</div></div>` ).insertAfter( ".review_left" );
 }
 
 }
