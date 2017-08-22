@@ -389,6 +389,7 @@ UpdateAjax(this.id);
 
 //-----------------------------------------------
 function ClickReview(IdOfTarget) {
+  bS();
   $('#bottom_menu').empty();
   $.getJSON('/', function(data) {
     data = data.all_data.reviews
@@ -408,7 +409,9 @@ function LinkReview() {
 
 }
 //-----------------------------------------------
-
+function bS(){
+  $( "#bottom_menu" ).html(`<center><img src="/img/load.gif" style="position: absolute;top: 50%;"></center>`);
+}
 
 
 function UpdateAjax(id) {
@@ -416,7 +419,7 @@ function UpdateAjax(id) {
   $.ajax({
     url: '/',
     data: ({id: current_id}),
-    beforeSend: function(){$( "#bottom_menu" ).html(`<center><img src="/img/load.gif" style="position: absolute;top: 50%;"></center>`)},
+    beforeSend: bS(),
     success: function (data) {
       //var arr = $.parseJSON(data);
         $.getJSON( '/', function( data ) {
