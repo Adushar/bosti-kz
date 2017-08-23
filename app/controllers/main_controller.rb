@@ -1,6 +1,5 @@
 class MainController < ApplicationController
   def home
-    i = 0
     @articles = Article.all
     articles = @articles.where(params[:id])
     @reviews = Review.all
