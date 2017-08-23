@@ -240,7 +240,7 @@ $(document).ready(function() {
   $(targ2).click();
   $(targ3).click();
   $(targ4).click();
-  if (id != "null") {
+  if (id != "null" && id) {
   setTimeout(function() {
     if (targ1 != "#null") TargOpen = targ1;
     if (targ2 != "#null") TargOpen = targ2;
@@ -333,6 +333,7 @@ fimg.onclick = function fimg(fake) {
     removeParameterByName("target2");
     removeParameterByName("target3");
     removeParameterByName("target4");
+    removeParameterByName("id");
   };
 
   simg.onclick  = function simg(fake) {
@@ -347,6 +348,7 @@ fimg.onclick = function fimg(fake) {
     removeParameterByName("target2");
     removeParameterByName("target3");
     removeParameterByName("target4");
+    removeParameterByName("id");
   };
 
 Aritm.onclick = function Aritm(fake) {
@@ -359,6 +361,7 @@ Aritm.onclick = function Aritm(fake) {
   UpdateAjax(this.id);
   removeParameterByName("target3");
   removeParameterByName("target4");
+  removeParameterByName("id");
 }
 
   TandP.onclick = function TandP(fake) {
@@ -374,6 +377,7 @@ Aritm.onclick = function Aritm(fake) {
     updateParameterByName("target2", this.id);
     removeParameterByName("target3");
     removeParameterByName("target4");
+    removeParameterByName("id");
     UpdateAjax(this.id);
   }
   NandA.onclick = function NandA(fake) {
@@ -388,6 +392,7 @@ Aritm.onclick = function Aritm(fake) {
     updateParameterByName("target2", this.id);
     removeParameterByName("target3");
     removeParameterByName("target4");
+    removeParameterByName("id");
     UpdateAjax(this.id);
   }
   EandT.onclick = function() {
@@ -402,6 +407,7 @@ Aritm.onclick = function Aritm(fake) {
     updateParameterByName("target2", this.id);
     removeParameterByName("target3");
     removeParameterByName("target4");
+    removeParameterByName("id");
     UpdateAjax(this.id);
   }
 
@@ -415,6 +421,7 @@ Arm.onclick = function Arm(fake) {
   $('#fimg').css("margin-top", "2%");
   updateParameterByName("target3", this.id);
   removeParameterByName("target4");
+  removeParameterByName("id");
   UpdateAjax(this.id);
 }
 
@@ -428,6 +435,7 @@ Card.onclick = function Card(fake) {
   $('#fimg').css("margin-top", "2%");
   updateParameterByName("target3", this.id);
   removeParameterByName("target4");
+  removeParameterByName("id");
   UpdateAjax(this.id);
 }
 Elec.onclick = function Elec(fake) {
@@ -440,6 +448,7 @@ $('#fimg').css("margin-top", "2%");
 $("#tsvg").addClass('animated slideInLeft');
 updateParameterByName("target3", this.id);
 removeParameterByName("target4");
+removeParameterByName("id");
 UpdateAjax(this.id);
 }
 Neir.onclick = function Neir(fake) {
@@ -452,6 +461,7 @@ $("#tsvg").addClass('animated slideInLeft');
 $('#fimg').css("margin-top", "2%");
 updateParameterByName("target3", this.id);
 removeParameterByName("target4");
+removeParameterByName("id");
 UpdateAjax(this.id);
 }
 Rant.onclick = function Rant(fake) {
@@ -463,8 +473,10 @@ $('#tsvg').css("transform", "translateY(-2%)");
 $('#fimg').css("margin-top", "2%");
 updateParameterByName("target3", this.id);
 removeParameterByName("target4");
+removeParameterByName("id");
 UpdateAjax(this.id);
 }
+
 Perf.onclick = function Perf(fake) {
   document.getElementById("tsvg").style.paddingTop = "4%";
   document.getElementById("tsvg").style.marginBottom = "12px";
@@ -474,6 +486,7 @@ $('#tsvg').css("transform", "translate(1%, 2%)");
 $('#fimg').css("margin-top", "2%");
 updateParameterByName("target3", this.id);
 removeParameterByName("target4");
+removeParameterByName("id");
 UpdateAjax(this.id);
 }
 
