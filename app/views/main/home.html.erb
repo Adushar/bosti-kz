@@ -95,6 +95,10 @@ figcaption {
   transform: translate(1%, -5%);
 }
 
+.using {
+  font-style: italic;
+}
+
 #SBlock a, .NBlock a{
   display: block;
   cursor: pointer
@@ -326,6 +330,14 @@ function updateParameterByName(key,val){
     }
     window.history.pushState(null, document.title, url);
 }
+
+$(".NBlock a").click(function(){
+  var aim = "#" + $(this).parent().attr('id') + " a";
+  $(aim).each(function( index ) {
+    ($(this)).removeClass( "using" );
+  });
+  $(this).addClass( "using" );
+});
 
 fimg.onclick = function fimg(fake) {
     $( "#simg" ).hide();
