@@ -241,16 +241,28 @@ $(document).ready(function() {
   $(targ3).click();
   $(targ4).click();
   if (id != "null" && id) {
-  setTimeout(function() {
+//   setTimeout(function() {
+//     if (targ1 != "#null") TargOpen = targ1;
+//     if (targ2 != "#null") TargOpen = targ2;
+//     if (targ3 != "#null") TargOpen = targ3;
+//     if (targ4 != "#null") TargOpen = targ4;
+//     ClickReview(id, TargOpen);
+// }, 1000);
+    checkContainer();
+}
+else {
+  removeParameterByName("id");
+}
+function checkContainer () {
+  if($('.bottom_punct').is(':visible')){ //if the container is visible on the page
     if (targ1 != "#null") TargOpen = targ1;
     if (targ2 != "#null") TargOpen = targ2;
     if (targ3 != "#null") TargOpen = targ3;
     if (targ4 != "#null") TargOpen = targ4;
-    ClickReview(id, TargOpen);
-}, 1000);
-}
-else {
-  removeParameterByName("id");
+    ClickReview(id, TargOpen);  //Adds a grid to the html
+  } else {
+    setTimeout(checkContainer, 50); //wait 50 ms, then try again
+  }
 }
 });
 
