@@ -498,32 +498,68 @@ function ClickReview(IdOfTarget, ParentId) {
   bS();
   updateParameterByName("id", IdOfTarget);
   $('#bottom_menu').empty();
-  $.getJSON('/', function(data) {
-    data = data.all_data.reviews
+  $.getJSON('/', function(data1) {
+    data = data1.all_data.reviews
+    articles = data1.all_data.articles
     $.each(data, function(key, val) {
       if (val.id == IdOfTarget) {
         bottom_menu.innerHTML += `<div class="bottom_review">` + val.html + `</div>`;
         $(`<a id="close_svg" onclick="close_svg();"><svg height="30" width="30"><line stroke-width="5" x1="0" y1="0" stroke="#3096b8" x2="30" y2="30"></line><line stroke-width="5" x2="0" y1="0" stroke="#3096b8" x1="30" y2="30"></line></svg></a>`).insertBefore( ".review_left" );
         $( ".review_left" ).append( `<center><a id="downloadPDF" href="` + val.downloadLink + `" target="_blank" download="'>">Скачать PDF</a></center>` );
+        getPunct(articles, val.recomend.replace(', ','').replace(',','').replace(' ','').split(''), data1.all_data.reviews);
         style.innerHTML += val.css.replace(/<br\s*\/?>/gi,'').replace(/<\/p>/gm, "").replace(/<\p>/gm, "");
       }
     });
  });
 }
 }
+function getPunct(articles, targets, reviews) {
+    var data = articles
+    var count = 0
+    articles.reverse();
+    $(".bottom_review").append("<h3 style='padding: 2% 0;'>Мы также рекомендуем в этом розделе:</h3>");
+    $.each( data, function( i, val ) {
+      if (val.id == targets[0] || val.id == targets[1] || val.id == targets[2]) {
+        getLast();
+        bottom_menu.innerHTML += `<a class="aON" onclick="ClickReview(`+ val.review_id + `,'` + TargOpen + `');"><div class="bottom_punct">` + val.html + `</div></a>`;
+        style.innerHTML += val.css.replace(/<br\s*\/?>/gi,'').replace(/<\/p>/gm, "").replace(/<\p>/gm, "");
+      }
+    });
+    $("#bottom_menu").append("<h3 style='padding: 2% 0; text-align: center;'>В других разделах продуктов:</h3>");
+    $.each( data, function( i, val ) {
+
+      $.each( reviews, function( i, val2 ) {
+        if (val.review_id != val2.id) {
+          count += 1
+            if (count <= 3) {
+              getLast();
+              bottom_menu.innerHTML += `<a class="aON" onclick="ClickReview(`+ val.review_id + `,'` + TargOpen + `');"><div class="bottom_punct">` + val.html + `</div></a>`;
+              style.innerHTML += val.css.replace(/<br\s*\/?>/gi,'').replace(/<\/p>/gm, "").replace(/<\p>/gm, "");
+            }
+        }
+      });
+    });
+}
+
 function close_svg(){
-  var targ1 = "#" + getParameterByName("target1", window.location.href);
-  var targ2 = "#" + getParameterByName("target2", window.location.href);
-  var targ3 = "#" + getParameterByName("target3", window.location.href);
-  if (targ1 != "#null") TargOpen = targ1;
-  if (targ2 != "#null") TargOpen = targ2;
-  if (targ3 != "#null") TargOpen = targ3;
+  getLast();
   $(TargOpen).click();
   removeParameterByName("id");
 }
 //-----------------------------------------------
 function bS(){
   $( "#bottom_menu" ).html(`<center><img src="/img/load.gif" style="position: absolute;top: 50%;"></center>`);
+}
+
+function getLast() {
+  var targ1 = "#" + getParameterByName("target1", window.location.href);
+  var targ2 = "#" + getParameterByName("target2", window.location.href);
+  var targ3 = "#" + getParameterByName("target3", window.location.href);
+  var targ4 = "#" + getParameterByName("target4", window.location.href);
+  if (targ1 != "#null") TargOpen = targ1;
+  if (targ2 != "#null") TargOpen = targ2;
+  if (targ3 != "#null") TargOpen = targ3;
+  if (targ4 != "#null") TargOpen = targ4;
 }
 
 
