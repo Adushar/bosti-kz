@@ -337,7 +337,7 @@ $("#FBlock a").click(function(){$("#FBlock a").css("color", "#000");});
 fimg.onclick = function fimg() {
     $( "#simg" ).hide();
     $( "#mimg" ).hide();
-    $('#fimg').css({"padding-left": "3vw", "padding-right": "15px", "margin-top": "2%"});
+    $('#fimg').css({"padding-left": "3vw", "padding-right": "15px"});
     $('#main').css({"text-align": "inherit", "padding-top": "25vh", "height": "124vh"});
     $('#fsvg').css("display", "inline-block");
     $("ul.nav li:nth-child(2) a").removeClass( "active" )
@@ -384,7 +384,8 @@ Aritm.onclick = function Aritm() {
 }
 
   TandP.onclick = function TandP() {
-    $('#main').css("padding-top", "20vh")
+    $('#fimg').css("margin-top", "2%");
+    $('#main').css("padding-top", "20vh");
     $('#bottom_menu').show(); //видимость нижнего меню
     $('#ssvg').css({"display": "inline-block", "vertical-align": "top", "color": "#172782"});
     $("#main #bottom_menu").addClass('animated fadeInUp'); //Анимация для нижнего блока
