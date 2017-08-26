@@ -58,6 +58,8 @@ figcaption {
   transform: translate(1%, -40%) !important;
 }
 
+.NBlock a:hover {font-style: italic;}
+
 #TandP, #NandA, #EandT {
   display: block;
 }
@@ -354,6 +356,7 @@ fimg.onclick = function fimg() {
   simg.onclick  = function simg() {
     $("ul.nav li:nth-child(1) a").removeClass( "active" );
     $("ul.nav li:nth-child(2) a").addClass('active');
+    $('#main').css({"text-align": "inherit", "padding-top": "25vh", "height": "124vh"});
     $( "#fimg" ).hide();
     $( "#mimg" ).hide();
     $('#TWOsvg').css({"display": "inline-block"});
