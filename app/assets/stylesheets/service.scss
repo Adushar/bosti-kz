@@ -1,3 +1,34 @@
 // Place all the styles related to the Service controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+#main {
+  height: auto !important;
+}
+#what_we_do {
+  float: left;
+  width: 45%;
+  margin: 5% 0 0 10%;
+}
+
+#what_we_do, #contact-service {
+  display: inline-block;
+  vertical-align: top;
+  padding: 1% 2%;
+  border: 1px solid #2E2F30;
+  background: white;
+}
+
+#contact-service {
+  width: 20%;
+  min-width: 400px;
+  margin: 5%;
+}
+
+.contact_field {
+  width: 100%;
+  padding: 2% 3%;
+}
+
+#contact-service h2, #what_we_do h2 {
+  padding: 0 0 2% 0;
+}
