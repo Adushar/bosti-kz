@@ -13,6 +13,11 @@ class MainController < ApplicationController
   def service
   end
   def questions
+    @ask = Ask.new(params[:ask])
+    if @ask.save
+      flash[:success] = "Post created!"
+      
+    end
   end
   def contact
   end

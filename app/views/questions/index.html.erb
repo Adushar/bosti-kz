@@ -19,6 +19,12 @@
 
   #qustions {margin: 3%}
 
+  #qustions h4 {margin-top: 3%;}
+
+  .answ {
+    color: #da6767;
+  }
+
     #ask_qustions, #tell_story {
       display: inline-block;
     }
@@ -43,20 +49,30 @@
   <p>В данном разделе Вы можете задать интересующие Вас вопросы специалистам относительно технических характеристик, сервиса и доставки медицинского оборудования, которое мы поставляем.</p>
   <div id="ask_qustions">
     <div id="ask">
-      <input placeholder="Фамилия, имя, отчество" style="width: 100%">
-      <textarea placeholder="Текст вашего сообщения" cols="40" rows="3" style="width: 100%"></textarea>
-      <h5>
-        <input type="submit" value="Отправить">
-        <input type="reset" value="Очистить">
-      </h5>
+      <%= form_for :contact do |f| %>
+      <%= f.text_field :name_of_questioner, placeholder: "Фамилия, имя, отчество" %>
+
+      <%= f.text_area :question, placeholder: "Текст вашего сообщения", cols: "40", rows: "3", style: "max-width: 100%" %>
+
+    <h5>
+      <%= f.submit "Отправить" %>
+    </h5>
+  <% end %>
     </div>
     <div id="qustions">
-      <h4>Имя: Lorem ipsum</h4>
-      <p>Вопрос: Lorem lorem ipsum lorem Lorem lorem ipsum lorem Lorem lorem ipsum lorem Lorem lorem ipsum lorem Lorem lorem ipsum lorem Lorem lorem ipsum lorem </p>
-      <p><strong>Ответ: ...</strong></p>
-      <h4>Имя: Lorem ipsum</h4>
-      <p>Вопрос: Lorem lorem ipsum lorem Lorem lorem ipsum lorem Lorem lorem ipsum lorem Lorem lorem ipsum lorem Lorem lorem ipsum lorem Lorem lorem ipsum lorem </p>
-      <p><strong>Ответ: ...</strong></p>
+      <% @contacts.each do |contact| %>
+      <h4>Имя: <%= contact.name_of_questioner %></h4>
+      <p>Вопрос: <%= contact.question %></p>
+      <% if contact.name_of_answerer != nil %>
+        <p class="answ"><strong><%= contact.name_of_answerer %></strong></p>
+        <p class="answ"><strong>Ответ: <%= contact.answer %></strong></p>
+      <% else %>
+        <p class="answ"><strong>Администация сайта пока не дала ответ на этот вопрос</strong></p>
+      <% end %>
+      <% end %>
     </div>
   </div>
     <a id="tell_story" href="/contact"><img src="/img/Tell_your_story.png"></a>
+<script>
+
+</script>
