@@ -232,9 +232,8 @@ figcaption {
 var styleDef = $('#style').html();
 var htmlDef = $('#bottom_menu').html();
 var TargOpen = 0;
+var color = 0;
 $(document).ready(function() {
-  var LoadVar = window.location.href.indexOf("?loc=d");
-  var LoadVar2 = window.location.href.indexOf("?loc=p");
   var id = getParameterByName("id", window.location.href);
   var targ1 = "#" + getParameterByName("target1", window.location.href);
   var targ2 = "#" + getParameterByName("target2", window.location.href);
@@ -245,16 +244,8 @@ $(document).ready(function() {
   $(targ3).click();
   $(targ4).click();
   if (id != "null" && id) {
-//   setTimeout(function() {
-//     if (targ1 != "#null") TargOpen = targ1;
-//     if (targ2 != "#null") TargOpen = targ2;
-//     if (targ3 != "#null") TargOpen = targ3;
-//     if (targ4 != "#null") TargOpen = targ4;
-//     ClickReview(id, TargOpen);
-// }, 1000);
     checkContainer();
-}
-else {
+} else {
   removeParameterByName("id");
 }
 function checkContainer () {
@@ -263,7 +254,7 @@ function checkContainer () {
     if (targ2 != "#null") TargOpen = targ2;
     if (targ3 != "#null") TargOpen = targ3;
     if (targ4 != "#null") TargOpen = targ4;
-    ClickReview(id, TargOpen);  //Adds a grid to the html
+    ClickReview(id, TargOpen);
   } else {
     setTimeout(checkContainer, 50); //wait 50 ms, then try again
   }
@@ -296,8 +287,7 @@ function removeParameterByName(parameter)
       if (pars[i].lastIndexOf(prefix, 0)!==-1)
           pars.splice(i, 1);
   url = urlBase+'?'+pars.join('&');
-  window.history.pushState('',document.title,url); // added this line to push the new url directly to url bar .
-
+  window.history.pushState('',document.title,url);
 }
 return url;
 }
@@ -308,19 +298,15 @@ function updateParameterByName(key,val){
     var UrlAdd = "&";
 
     if(reExp.test(url)) {
-        // update
         var reExp = new RegExp("[\?&]" + key + "=([^&#]*)");
         var delimiter = reExp.exec(url)[0].charAt(0);
         url = url.replace(reExp, delimiter + key + "=" + val);
     } else {
-        // add
         var newParam = key + "=" + val;
-
         if(url.indexOf('?') == -1){
           url += '?';
           UrlAdd = ""
         }
-
         if(url.indexOf('#') > -1){
             var urlparts = url.split('#');
             url = urlparts[0] +  "&" + newParam +  (urlparts[1] ?  "#" +urlparts[1] : '');
@@ -333,13 +319,22 @@ function updateParameterByName(key,val){
 
 $(".NBlock a").click(function(){
   var aim = "#" + $(this).parent().attr('id') + " a";
+  $("#SBlock a").css("color", "rgb(23, 39, 130)");
   $(aim).each(function( index ) {
+    ($(this)).removeClass( "using" );
+  });
+  $("#SBlock a").each(function( index ) {
+    ($(this)).removeClass( "using" );
+  });
+  $("#TBlock a").each(function( index ) {
     ($(this)).removeClass( "using" );
   });
   $(this).addClass( "using" );
 });
 
-fimg.onclick = function fimg(fake) {
+$("#FBlock a").click(function(){$("#FBlock a").css("color", "#000");});
+
+fimg.onclick = function fimg() {
     $( "#simg" ).hide();
     $( "#mimg" ).hide();
     $('#fimg').css({"padding-left": "3vw", "padding-right": "15px", "margin-top": "2%"});
@@ -360,7 +355,7 @@ fimg.onclick = function fimg(fake) {
     removeParameterByName("id");
   };
 
-  simg.onclick  = function simg(fake) {
+  simg.onclick  = function simg() {
     $("ul.nav li:nth-child(1) a").removeClass( "active" );
     $("ul.nav li:nth-child(2) a").addClass('active');
     $( "#fimg" ).hide();
@@ -375,7 +370,7 @@ fimg.onclick = function fimg(fake) {
     removeParameterByName("id");
   };
 
-Aritm.onclick = function Aritm(fake) {
+Aritm.onclick = function Aritm() {
   $('#main').css("padding-top", "20vh");
   $("#main #bottom_menu").addClass('animated fadeInUp');
   $('#bottom_menu').show();
@@ -388,23 +383,24 @@ Aritm.onclick = function Aritm(fake) {
   removeParameterByName("id");
 }
 
-  TandP.onclick = function TandP(fake) {
+  TandP.onclick = function TandP() {
     $('#main').css("padding-top", "20vh")
     $('#bottom_menu').show(); //видимость нижнего меню
-    $('#ssvg').css({"display": "inline-block", "vertical-align": "top"});
+    $('#ssvg').css({"display": "inline-block", "vertical-align": "top", "color": "#172782"});
     $("#main #bottom_menu").addClass('animated fadeInUp'); //Анимация для нижнего блока
     $("#main #ssvg").addClass('animated fadInLeft');
     $('#SBlock').show();
     $('#main').css("height", "auto");
     $('#bottom_menu').css("height", "auto");
     $("#tsvg").css("display", "none");
+    $("#TandP").css("color", "rgb(23, 39, 130)");
     updateParameterByName("target2", this.id);
     removeParameterByName("target3");
     removeParameterByName("target4");
     removeParameterByName("id");
     UpdateAjax(this.id);
   }
-  NandA.onclick = function NandA(fake) {
+  NandA.onclick = function NandA() {
     $('#main').css("padding-top", "20vh")
     $('#bottom_menu').show(); //видимость нижнего меню
     $('#ssvg').css("display", "none");
@@ -435,76 +431,89 @@ Aritm.onclick = function Aritm(fake) {
     UpdateAjax(this.id);
   }
 
-Arm.onclick = function Arm(fake) {
-ThirdWave();
-  tsvg.innerHTML = '<svg class="SVG animated slideInLeft" viewBox="0 0 30 120" direction="right"><line x1="0" y1="15" x2="10" y2="15" stroke-width="1" stroke="#000"></line><line x1="10" y1="15" x2="10" y2="105" stroke-width="1" stroke="#000"></line><g><line x1="10" y1="15" x2="28" y2="15" stroke-width="1" stroke="#000"></line><circle cx="28" cy="15" r="2" fill="#000"></circle></g><g><line x1="10" y1="45" x2="28" y2="45" stroke-width="1" stroke="#000"></line><circle cx="28" cy="45" r="2" fill="#000"></circle></g><g><line x1="10" y1="75" x2="28" y2="75" stroke-width="1" stroke="#000"></line><circle cx="28" cy="75" r="2" fill="#000"></circle></g><g><line x1="10" y1="105" x2="28" y2="105" stroke-width="1" stroke="#000"></line><circle cx="28" cy="105" r="2" fill="#000"></circle></g></svg><div class="NBlock" id="TBlock"><a class="npn" onclick="updateParameterByName(`target4`, this.id); UpdateAjax(this.id);" id="a1">Тахикардия</a><a class="npn" onclick="updateParameterByName(`target4`, this.id); UpdateAjax(this.id);" id="a2">Брадикардия</a><a class="npn" onclick="updateParameterByName(`target4`, this.id); UpdateAjax(this.id);" id="a3">Ресинхронизация сердечной деятельности</a><a class="npn" onclick="updateParameterByName(`target4`, this.id); UpdateAjax(this.id);" id="a4">Внешние устройства</a></div>'
-  $('#tsvg').css({"vertical-align": "top"});
+Arm.onclick = function Arm() {
+  color = "#3096b8"
+  $("#" + this.id).css("color", color)
 
+ThirdWave();
+  tsvg.innerHTML = '<svg class="SVG animated slideInLeft" viewBox="0 0 30 120" direction="right"><line x1="0" y1="15" x2="10" y2="15" stroke-width="1" stroke="#3096b8"></line><line x1="10" y1="15" x2="10" y2="105" stroke-width="1" stroke="#3096b8"></line><g><line x1="10" y1="15" x2="28" y2="15" stroke-width="1" stroke="#3096b8"></line><circle cx="28" cy="15" r="2" fill="#3096b8"></circle></g><g><line x1="10" y1="45" x2="28" y2="45" stroke-width="1" stroke="#3096b8"></line><circle cx="28" cy="45" r="2" fill="#3096b8"></circle></g><g><line x1="10" y1="75" x2="28" y2="75" stroke-width="1" stroke="#3096b8"></line><circle cx="28" cy="75" r="2" fill="#3096b8"></circle></g><g><line x1="10" y1="105" x2="28" y2="105" stroke-width="1" stroke="#3096b8"></line><circle cx="28" cy="105" r="2" fill="#3096b8"></circle></g></svg><div class="NBlock" id="TBlock"><a class="npn" onclick="updateParameterByName(`target4`, this.id); UpdateAjax(this.id);" id="a1">Тахикардия</a><a class="npn" onclick="updateParameterByName(`target4`, this.id); UpdateAjax(this.id);" id="a2">Брадикардия</a><a class="npn" onclick="updateParameterByName(`target4`, this.id); UpdateAjax(this.id);" id="a3">Ресинхронизация сердечной деятельности</a><a class="npn" onclick="updateParameterByName(`target4`, this.id); UpdateAjax(this.id);" id="a4">Внешние устройства</a></div>'
+  $('#tsvg').css({"vertical-align": "top", "color": color});
   $("#tsvg").addClass('animated slideInLeft');
-  $('#fimg').css("margin-top", "2%");
   updateParameterByName("target3", this.id);
   removeParameterByName("target4");
   removeParameterByName("id");
   UpdateAjax(this.id);
 }
 
-Card.onclick = function Card(fake) {
+Card.onclick = function Card() {
+  color = "#b82c51"
+  $("#" + this.id).css("color", color)
+
 ThirdWave();
   tsvg.innerHTML = '<svg class="SVG animated slideInLeft" viewBox="0 0 30 150" direction="right"><line x1="0" y1="45" x2="10" y2="45" stroke-width="1" stroke="#b82c51"></line><line x1="10" y1="15" x2="10" y2="135" stroke-width="1" stroke="#b82c51"></line><g><line x1="10" y1="15" x2="28" y2="15" stroke-width="1" stroke="#b82c51"></line><circle cx="28" cy="15" r="2" fill="#b82c51"></circle></g><g><line x1="10" y1="45" x2="28" y2="45" stroke-width="1" stroke="#b82c51"></line><circle cx="28" cy="45" r="2" fill="#b82c51"></circle></g><g><line x1="10" y1="75" x2="28" y2="75" stroke-width="1" stroke="#b82c51"></line><circle cx="28" cy="75" r="2" fill="#b82c51"></circle></g><g><line x1="10" y1="105" x2="28" y2="105" stroke-width="1" stroke="#b82c51"></line><circle cx="28" cy="105" r="2" fill="#b82c51"></circle></g><g><line x1="10" y1="135" x2="28" y2="135" stroke-width="1" stroke="#b82c51"></line><circle cx="28" cy="135" r="2" fill="#b82c51"></circle></g></svg><div class="NBlock" id="TBlock"><a class="npn" onclick="updateParameterByName(`target4`, this.id); UpdateAjax(this.id);" id="c1">Перикардиальные заплаты</a><a class="npn" onclick="updateParameterByName(`target4`, this.id); UpdateAjax(this.id);" id="c2">Механические клапаны для сердца</a><a class="npn" onclick="updateParameterByName(`target4`, this.id); UpdateAjax(this.id);" id="c3">Биологические клапаны для сердца</a><a class="npn" onclick="updateParameterByName(`target4`, this.id); UpdateAjax(this.id);" id="c4">Аортальные графты с клапаном</a><a class="npn" onclick="updateParameterByName(`target4`, this.id); UpdateAjax(this.id);" id="c5">Аксессуары для кардиохирургии SJM</a></div>'
-  $('#tsvg').css({"vertical-align": "top"});
+  $('#tsvg').css({"vertical-align": "top", "color": color});
 
   $("#tsvg").addClass('animated slideInLeft');
-  $('#fimg').css("margin-top", "2%");
+
   updateParameterByName("target3", this.id);
   removeParameterByName("target4");
   removeParameterByName("id");
   UpdateAjax(this.id);
 }
-Elec.onclick = function Elec(fake) {
+Elec.onclick = function Elec() {
+  color = "#b322b3"
+  $("#" + this.id).css("color", color)
+
 ThirdWave();
 tsvg.innerHTML = '<svg class="SVG animated slideInLeft"" viewBox="0 0 30 150" direction="right"><line x1="0" y1="75" x2="10" y2="75" stroke-width="1" stroke="#b322b3"></line><line x1="10" y1="15" x2="10" y2="135" stroke-width="1" stroke="#b322b3"></line><g><line x1="10" y1="15" x2="28" y2="15" stroke-width="1" stroke="#b322b3"></line><circle cx="28" cy="15" r="2" fill="#b322b3"></circle></g><g><line x1="10" y1="45" x2="28" y2="45" stroke-width="1" stroke="#b322b3"></line><circle cx="28" cy="45" r="2" fill="#b322b3"></circle></g><g><line x1="10" y1="75" x2="28" y2="75" stroke-width="1" stroke="#b322b3"></line><circle cx="28" cy="75" r="2" fill="#b322b3"></circle></g><g><line x1="10" y1="105" x2="28" y2="105" stroke-width="1" stroke="#b322b3"></line><circle cx="28" cy="105" r="2" fill="#b322b3"></circle></g><g><line x1="10" y1="135" x2="28" y2="135" stroke-width="1" stroke="#b322b3"></line><circle cx="28" cy="135" r="2" fill="#b322b3"></circle></g></svg><div class="NBlock" id="TBlock"><a class="npn" onclick="updateParameterByName(`target4`, this.id); UpdateAjax(this.id);" id="e1">Диагностические катетеры</a><a class="npn" onclick="updateParameterByName(`target4`, this.id); UpdateAjax(this.id);" id="e2">Аблационные катетеры</a><a class="npn" onclick="updateParameterByName(`target4`, this.id); UpdateAjax(this.id);" id="e3">Оборудование для ЭФИ и РЧА</a><a class="npn" onclick="updateParameterByName(`target4`, this.id); UpdateAjax(this.id);" id="e4">3D картирование сердца</a><a class="npn" onclick="updateParameterByName(`target4`, this.id); UpdateAjax(this.id);" id="e5">Аксессуары для ЭФИ SJM</a></div>'
-$('#tsvg').css({"vertical-align": "top"});
-
-$('#fimg').css("margin-top", "2%");
+$('#tsvg').css({"vertical-align": "top", "color": color});
 $("#tsvg").addClass('animated slideInLeft');
 updateParameterByName("target3", this.id);
 removeParameterByName("target4");
 removeParameterByName("id");
 UpdateAjax(this.id);
 }
-Neir.onclick = function Neir(fake) {
+Neir.onclick = function Neir() {
+  color = "rgb(66, 133, 143)"
+  $("#" + this.id).css("color", color)
+
   ThirdWave();
   document.getElementById("tsvg").style.marginTop = "-1em";
-tsvg.innerHTML = '<svg class="SVG animated slideInLeft"" id="SVG2" viewBox="0 0 30 180"><line x1="0" y1="135" x2="10" y2="135" stroke-width="1" stroke="#172782"></line><line x1="10" y1="15" x2="10" y2="135" stroke-width="1" stroke="#172782"></line><g><line x1="10" y1="15" x2="28" y2="15" stroke-width="1" stroke="#172782"></line><circle cx="28" cy="15" r="2" fill="#172782"></circle></g><g><line x1="10" y1="75" x2="28" y2="75" stroke-width="1" stroke="#172782"></line><circle cx="28" cy="75" r="2" fill="#172782"></circle></g><g><line x1="10" y1="135" x2="28" y2="135" stroke-width="1" stroke="#172782"></line><circle cx="28" cy="135" r="2" fill="#172782"></circle></g></svg><div class="NBlock" id="TBlock"><a class="npn" onclick="updateParameterByName(`target4`, this.id); UpdateAjax(this.id);" id="n1">Эпидуральная электростимуляция<br> спинного мозга (SCS)</a><a class="npn" onclick="updateParameterByName(`target4`, this.id); UpdateAjax(this.id);" id="n2">Электростимуляция глубинных<br> структур головного мозга (DBS)</a><a class="npn" onclick="updateParameterByName(`target4`, this.id); UpdateAjax(this.id);" id="n3">Шунтирующие системы, наружные дренажи, вентрикулярные<br> резервуары и мониторинг ВЧД</a></div>'
-$('#tsvg').css({"vertical-align": "top"});
+tsvg.innerHTML = '<svg class="SVG animated slideInLeft"" id="SVG2" viewBox="0 0 30 180"><line x1="0" y1="135" x2="10" y2="135" stroke-width="1" stroke="rgb(66, 133, 143)"></line><line x1="10" y1="15" x2="10" y2="135" stroke-width="1" stroke="rgb(66, 133, 143)"></line><g><line x1="10" y1="15" x2="28" y2="15" stroke-width="1" stroke="rgb(66, 133, 143)"></line><circle cx="28" cy="15" r="2" fill="rgb(66, 133, 143)"></circle></g><g><line x1="10" y1="75" x2="28" y2="75" stroke-width="1" stroke="rgb(66, 133, 143)"></line><circle cx="28" cy="75" r="2" fill="rgb(66, 133, 143)"></circle></g><g><line x1="10" y1="135" x2="28" y2="135" stroke-width="1" stroke="rgb(66, 133, 143)"></line><circle cx="28" cy="135" r="2" fill="rgb(66, 133, 143)"></circle></g></svg><div class="NBlock" id="TBlock"><a class="npn" onclick="updateParameterByName(`target4`, this.id); UpdateAjax(this.id);" id="n1">Эпидуральная электростимуляция<br> спинного мозга (SCS)</a><a class="npn" onclick="updateParameterByName(`target4`, this.id); UpdateAjax(this.id);" id="n2">Электростимуляция глубинных<br> структур головного мозга (DBS)</a><a class="npn" onclick="updateParameterByName(`target4`, this.id); UpdateAjax(this.id);" id="n3">Шунтирующие системы, наружные дренажи, вентрикулярные<br> резервуары и мониторинг ВЧД</a></div>'
+$('#tsvg').css({"vertical-align": "top", "color": color});
 $('#tsvg').css("transform", "translate(1%, -15%)");
 $("#tsvg").addClass('animated slideInLeft');
-$('#fimg').css("margin-top", "2%");
+
 updateParameterByName("target3", this.id);
 removeParameterByName("target4");
 removeParameterByName("id");
 UpdateAjax(this.id);
 }
-Rant.onclick = function Rant(fake) {
-ThirdWave();
-document.getElementById("tsvg").style.marginTop = "-1.25em";
-  document.getElementById("tsvg").style.marginBottom = "0.625em";
-tsvg.innerHTML = '<svg class="SVG animated slideInLeft"" viewBox="0 0 30 215" direction="right"><line x1="0" y1="165" x2="10" y2="165" stroke-width="1" stroke="#0f0f0f"></line><line x1="10" y1="15" x2="10" y2="200" stroke-width="1" stroke="#0f0f0f"></line><g><line x1="10" y1="15" x2="28" y2="15" stroke-width="1" stroke="#0f0f0f"></line><circle cx="28" cy="15" r="2" fill="#0f0f0f"></circle></g><g><line x1="10" y1="45" x2="28" y2="45" stroke-width="1" stroke="#0f0f0f"></line><circle cx="28" cy="45" r="2" fill="#0f0f0f"></circle></g><g><line x1="10" y1="75" x2="28" y2="75" stroke-width="1" stroke="#0f0f0f"></line><circle cx="28" cy="75" r="2" fill="#0f0f0f"></circle></g><g><line x1="10" y1="105" x2="28" y2="105" stroke-width="1" stroke="#0f0f0f"></line><circle cx="28" cy="105" r="2" fill="#0f0f0f"></circle></g><g><line x1="10" y1="165" x2="28" y2="165" stroke-width="1" stroke="#0f0f0f"></line><circle cx="28" cy="165" r="2" fill="#0f0f0f"></circle></g><g><line x1="10" y1="200" x2="28" y2="200" stroke-width="1" stroke="#0f0f0f"></line><circle cx="28" cy="200" r="2" fill="#0f0f0f"></circle></g></svg><div class="NBlock" id="TBlock"><a class="npn" onclick="updateParameterByName(`target4`, this.id); UpdateAjax(this.id);" id="r1">Визуализация сосудов сердца - OCT</a><a class="npn" onclick="updateParameterByName(`target4`, this.id); UpdateAjax(this.id);" id="r2">Внутрисердечные и сосудистые окклюдеры Amplatzer</a><a class="npn" onclick="updateParameterByName(`target4`, this.id); UpdateAjax(this.id);" id="r3">Измерение внутрисосудистогов давления - FFR</a><a class="npn" onclick="updateParameterByName(`target4`, this.id); UpdateAjax(this.id);" id="r4">Инструменты для периферической <br>ангиопластики и стентирования</a><a class="npn" onclick="updateParameterByName(`target4`, this.id); UpdateAjax(this.id);" id="r5">Аксессуары для коронарографий</a><a class="npn" onclick="updateParameterByName(`target4`, this.id); UpdateAjax(this.id);" id="r6">Инструменты для коронарной ангиопластики и стентирования</a></div>'
-$('#tsvg').css({"vertical-align": "bottom"});
-$('#tsvg').css("transform", "translateY(-2%)");
-$('#fimg').css("margin-top", "2%");
-updateParameterByName("target3", this.id);
-removeParameterByName("target4");
-removeParameterByName("id");
-UpdateAjax(this.id);
+Rant.onclick = function Rant() {
+  color = "rgb(44, 104, 6)"
+  $("#" + this.id).css("color", color)
+
+  ThirdWave();
+  document.getElementById("tsvg").style.marginTop = "-1.25em";
+    document.getElementById("tsvg").style.marginBottom = "0.625em";
+  tsvg.innerHTML = '<svg class="SVG animated slideInLeft"" viewBox="0 0 30 215" direction="right"><line x1="0" y1="165" x2="10" y2="165" stroke-width="1" stroke="rgb(44, 104, 6)"></line><line x1="10" y1="15" x2="10" y2="200" stroke-width="1" stroke="rgb(44, 104, 6)"></line><g><line x1="10" y1="15" x2="28" y2="15" stroke-width="1" stroke="rgb(44, 104, 6)"></line><circle cx="28" cy="15" r="2" fill="rgb(44, 104, 6)"></circle></g><g><line x1="10" y1="45" x2="28" y2="45" stroke-width="1" stroke="rgb(44, 104, 6)"></line><circle cx="28" cy="45" r="2" fill="rgb(44, 104, 6)"></circle></g><g><line x1="10" y1="75" x2="28" y2="75" stroke-width="1" stroke="rgb(44, 104, 6)"></line><circle cx="28" cy="75" r="2" fill="rgb(44, 104, 6)"></circle></g><g><line x1="10" y1="105" x2="28" y2="105" stroke-width="1" stroke="rgb(44, 104, 6)"></line><circle cx="28" cy="105" r="2" fill="rgb(44, 104, 6)"></circle></g><g><line x1="10" y1="165" x2="28" y2="165" stroke-width="1" stroke="rgb(44, 104, 6)"></line><circle cx="28" cy="165" r="2" fill="rgb(44, 104, 6)"></circle></g><g><line x1="10" y1="200" x2="28" y2="200" stroke-width="1" stroke="rgb(44, 104, 6)"></line><circle cx="28" cy="200" r="2" fill="rgb(44, 104, 6)"></circle></g></svg><div class="NBlock" id="TBlock"><a class="npn" onclick="updateParameterByName(`target4`, this.id); UpdateAjax(this.id);" id="r1">Визуализация сосудов сердца - OCT</a><a class="npn" onclick="updateParameterByName(`target4`, this.id); UpdateAjax(this.id);" id="r2">Внутрисердечные и сосудистые окклюдеры Amplatzer</a><a class="npn" onclick="updateParameterByName(`target4`, this.id); UpdateAjax(this.id);" id="r3">Измерение внутрисосудистогов давления - FFR</a><a class="npn" onclick="updateParameterByName(`target4`, this.id); UpdateAjax(this.id);" id="r4">Инструменты для периферической <br>ангиопластики и стентирования</a><a class="npn" onclick="updateParameterByName(`target4`, this.id); UpdateAjax(this.id);" id="r5">Аксессуары для коронарографий</a><a class="npn" onclick="updateParameterByName(`target4`, this.id); UpdateAjax(this.id);" id="r6">Инструменты для коронарной ангиопластики и стентирования</a></div>'
+  $('#tsvg').css({"vertical-align": "bottom", "color": color});
+  $('#tsvg').css("transform", "translateY(-2%)");
+  updateParameterByName("target3", this.id);
+  removeParameterByName("target4");
+  removeParameterByName("id");
+  UpdateAjax(this.id);
 }
 
-Perf.onclick = function Perf(fake) {
+Perf.onclick = function Perf() {
+  color = "rgb(138, 60, 40)"
+  $("#" + this.id).css("color", color)
+
   ThirdWave();
   document.getElementById("tsvg").style.marginBottom = "1em";
-  tsvg.innerHTML = '<svg class="SVG animated slideInLeft"" viewBox="0 0 30 150" direction="right"><line x1="0" y1="135" x2="10" y2="135" stroke-width="1" stroke="#0f0f0f"></line><line x1="10" y1="15" x2="10" y2="135" stroke-width="1" stroke="#0f0f0f"></line><g><line x1="10" y1="15" x2="28" y2="15" stroke-width="1" stroke="#0f0f0f"></line><circle cx="28" cy="15" r="2" fill="#0f0f0f"></circle></g><g><line x1="10" y1="45" x2="28" y2="45" stroke-width="1" stroke="#0f0f0f"></line><circle cx="28" cy="45" r="2" fill="#0f0f0f"></circle></g><g><line x1="10" y1="75" x2="28" y2="75" stroke-width="1" stroke="#0f0f0f"></line><circle cx="28" cy="75" r="2" fill="#0f0f0f"></circle></g><g><line x1="10" y1="105" x2="28" y2="105" stroke-width="1" stroke="#0f0f0f"></line><circle cx="28" cy="105" r="2" fill="#0f0f0f"></circle></g><g><line x1="10" y1="135" x2="28" y2="135" stroke-width="1" stroke="#0f0f0f"></line><circle cx="28" cy="135" r="2" fill="#0f0f0f"></circle></g></svg><div class="NBlock" id="TBlock"><a class="npn" onclick="updateParameterByName(`target4`, this.id); UpdateAjax(this.id);" id="p1">Наборы для гемофильтрации</a><a class="npn" onclick="updateParameterByName(`target4`, this.id); UpdateAjax(this.id);" id="p2">Наборы для кардиоплегии</a><a class="npn" onclick="updateParameterByName(`target4`, this.id); UpdateAjax(this.id);" id="p3">Оксигенаторы</a><a class="npn" onclick="updateParameterByName(`target4`, this.id); UpdateAjax(this.id);" id="p4">Канюли</a><a class="npn" onclick="updateParameterByName(`target4`, this.id); UpdateAjax(this.id);" id="p5">ЭКМО</a></div>'
-  $('#tsvg').css({"vertical-align": "bottom"});
-  $('#fimg').css("margin-top", "2%");
+  tsvg.innerHTML = '<svg class="SVG animated slideInLeft"" viewBox="0 0 30 150" direction="right"><line x1="0" y1="135" x2="10" y2="135" stroke-width="1" stroke="rgb(138, 60, 40)"></line><line x1="10" y1="15" x2="10" y2="135" stroke-width="1" stroke="rgb(138, 60, 40)"></line><g><line x1="10" y1="15" x2="28" y2="15" stroke-width="1" stroke="rgb(138, 60, 40)"></line><circle cx="28" cy="15" r="2" fill="rgb(138, 60, 40)"></circle></g><g><line x1="10" y1="45" x2="28" y2="45" stroke-width="1" stroke="rgb(138, 60, 40)"></line><circle cx="28" cy="45" r="2" fill="rgb(138, 60, 40)"></circle></g><g><line x1="10" y1="75" x2="28" y2="75" stroke-width="1" stroke="rgb(138, 60, 40)"></line><circle cx="28" cy="75" r="2" fill="rgb(138, 60, 40)"></circle></g><g><line x1="10" y1="105" x2="28" y2="105" stroke-width="1" stroke="rgb(138, 60, 40)"></line><circle cx="28" cy="105" r="2" fill="rgb(138, 60, 40)"></circle></g><g><line x1="10" y1="135" x2="28" y2="135" stroke-width="1" stroke="rgb(138, 60, 40)"></line><circle cx="28" cy="135" r="2" fill="rgb(138, 60, 40)"></circle></g></svg><div class="NBlock" id="TBlock"><a class="npn" onclick="updateParameterByName(`target4`, this.id); UpdateAjax(this.id);" id="p1">Наборы для гемофильтрации</a><a class="npn" onclick="updateParameterByName(`target4`, this.id); UpdateAjax(this.id);" id="p2">Наборы для кардиоплегии</a><a class="npn" onclick="updateParameterByName(`target4`, this.id); UpdateAjax(this.id);" id="p3">Оксигенаторы</a><a class="npn" onclick="updateParameterByName(`target4`, this.id); UpdateAjax(this.id);" id="p4">Канюли</a><a class="npn" onclick="updateParameterByName(`target4`, this.id); UpdateAjax(this.id);" id="p5">ЭКМО</a></div>'
+  $('#tsvg').css({"vertical-align": "bottom", "color": color});
+
   updateParameterByName("target3", this.id);
   removeParameterByName("target4");
   removeParameterByName("id");
@@ -513,7 +522,7 @@ Perf.onclick = function Perf(fake) {
 
 function ThirdWave() {
   document.getElementById("tsvg").style.marginTop = "0";
-
+  $('#fimg').css("margin-top", "2%");
   $('#tsvg').css({"display": "inline-block"});
 }
 
@@ -530,7 +539,7 @@ function ClickReview(IdOfTarget, ParentId) {
     $.each(data, function(key, val) {
       if (val.id == IdOfTarget) {
         bottom_menu.innerHTML += `<div class="bottom_review">` + val.html + `</div>`;
-        $(`<a id="close_svg" onclick="close_svg();"><svg height="30" width="30"><line stroke-width="5" x1="0" y1="0" stroke="#3096b8" x2="30" y2="30"></line><line stroke-width="5" x2="0" y1="0" stroke="#3096b8" x1="30" y2="30"></line></svg></a>`).insertBefore( ".review_left" );
+        $(`<a id="close_svg" onclick="close_svg();"><svg height="30" width="30"><line stroke-width="5" x1="0" y1="0" stroke=color x2="30" y2="30"></line><line stroke-width="5" x2="0" y1="0" stroke=color x1="30" y2="30"></line></svg></a>`).insertBefore( ".review_left" );
         $( ".review_left" ).append( `<center><a id="downloadPDF" href="` + val.downloadLink + `" target="_blank" download="'>">Скачать PDF</a></center>` );
         getPunct(articles, val.recomend.replace(', ','').replace(',','').replace(' ','').split(''), data1.all_data.reviews);
         style.innerHTML += val.css.replace(/<br\s*\/?>/gi,'').replace(/<\/p>/gm, "").replace(/<\p>/gm, "");
