@@ -131,10 +131,6 @@ figcaption {
   text-align: left !important;
 }
 
-.bottom_review h1, #close_svg {
-  display: inline-block;
-  text-align: left;
-}
 
 .bottom_review sub {
   font-size: 20px;
@@ -540,7 +536,7 @@ function ClickReview(IdOfTarget, ParentId) {
     $.each(data, function(key, val) {
       if (val.id == IdOfTarget) {
         bottom_menu.innerHTML += `<div class="bottom_review">` + val.html + `</div>`;
-        $(`<a id="close_svg" onclick="close_svg();"><svg height="30" width="30"><line stroke-width="5" x1="0" y1="0" stroke=color x2="30" y2="30"></line><line stroke-width="5" x2="0" y1="0" stroke=color x1="30" y2="30"></line></svg></a>`).insertBefore( ".review_left" );
+        $(`<a id="close_svg" onclick="close_svg();"><svg height="30" width="30"><line stroke-width="5" x1="0" y1="0" stroke="#3096b8" x2="30" y2="30"></line><line stroke-width="5" x2="0" y1="0" stroke="#3096b8" x1="30" y2="30"></line></svg></a>`).insertBefore( ".review_left" );
         $( ".review_left" ).append( `<center><a id="downloadPDF" href="` + val.downloadLink + `" target="_blank" download="'>">Скачать PDF</a></center>` );
         getPunct(articles, val.recomend.replace(', ','').replace(',','').replace(' ','').split(''), data1.all_data.reviews);
         style.innerHTML += val.css.replace(/<br\s*\/?>/gi,'').replace(/<\/p>/gm, "").replace(/<\p>/gm, "");
