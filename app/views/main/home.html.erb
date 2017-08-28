@@ -612,6 +612,7 @@ function UpdateAjax(id) {
           $('#bottom_menu').empty();
           $('#style').html(styleDef);
           $('#bottom_menu').html(htmlDef);
+          bottom_menu.innerHTML = `<h1>` + $("#" + current_id).html() + `</h1>`
           $.each( data, function( i, val ) {
             if (val.htmltarget == current_id && val.length != 0) {
             bottom_menu.innerHTML += `<a class="aON" onclick="ClickReview(`+ val.review_id + `,'` + id + `');"><div class="bottom_punct">` + val.html + `</div></a>`;
