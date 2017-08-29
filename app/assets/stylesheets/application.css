@@ -173,17 +173,12 @@ body {
    #what_we_do {
      margin-bottom: 2%;
    }
-   #ask_qustions {
-     margin-left: 15% !important;
-   }
+
  }
 
  @media (min-width: 1280px) and (max-width: 1919px) {
    #what_we_do {
      margin-bottom: 5%;
-   }
-   #ask_qustions {
-     margin-left: 5% !important;
    }
  }
 
@@ -233,10 +228,13 @@ body {
         min-width: auto;
         margin-bottom: 3%;
       }
+      #tell_story img {width: 300px;}
       .copyright {
         width: auto;
       }
   }
+
+  @media (max-width: 320px) {#tell_story img {width: 270px;}}
 
  @media (min-width: 1280px) {}
 
@@ -282,4 +280,15 @@ body {
      display: block;
      float: right;
    }
+   #ask_qustions {
+     margin: 3% 1%;
+     width: 90%;
+   }
+   #main {height: auto !important;}
+   #tell_story {
+     width: 90%;
+     min-width: auto;
+     margin: 2% auto;
+   }
+   #tell_story img {float: none;}
  }
