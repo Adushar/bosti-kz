@@ -40,19 +40,32 @@ input {
 <p>
   <input placeholder="Что будем искать ..." name="search_field" type="text">
   <button onclick="search()">Click me</button>
-  <select name="SortBy[]">
-    <option selected value="DateUp">По дате(↓)</option>
-    <option value="DateDown">По дате(↑)</option>
+  <select id="SortBy">
+    <option selected value="DateDown">По дате(↓)</option>
+    <option value="DateUp">По дате(↑)</option>
   </select>
   </p>
  <div id="result">
 
  </div>
 <script>
+var reversed = false;
 function search() {
   var input = document.getElementsByName('search_field')[0].value;
-  var name = "NONAME"
+  var SortBy = $( "#SortBy" ).val();
+  var name = "NONAME";
+  if (SortBy == "DateDown") {
+    reversed = true;
+    gon.articles = gon.articles.reverse();
+    gon.reviews = gon.reviews.reverse();
+  }
+  else if (reversed == true && SortBy == "DateUp") {
+    reversed = false;
+    gon.articles = gon.articles.reverse();
+    gon.reviews = gon.reviews.reverse();
+  }
   $("#result").css("display", "block");
+  $("#result").empty();
   $.each(gon.articles, function( index, val ) {
     name = "articles"
     PushToResult(val, name);
@@ -68,8 +81,6 @@ function search() {
     else {
       var t = 0
       if (result.getElementsByTagName("h2")[0]) t = result.getElementsByTagName("h2")[0]
-      console.log(223);
-      console.log(val);
       if (t.innerHTML == "Совпадений не найдено(грусный смайлик)") $( t ).remove();
       if (name == "articles") {result.innerHTML += `<a onclick="location.href = window.location.protocol + '//' + window.location.host + '/?target1=fimg&target2=TandP&id=` + val.review_id + `';"><div class="bottom_punct">` + val.html + `</div></a>`}
       else if (name == "reviews") {
