@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   get '/questions', to: 'questions#index'
   get '/contact', to: 'main#contact'
   get '/partners', to: 'main#partners'
+  get '/search', to: 'main#search'
 end

@@ -1,0 +1,79 @@
+<style>
+input {
+  width: auto;
+  height: 42px;
+  padding: initial;
+  margin: auto;
+  vertical-align: top;
+}
+
+
+#result {
+  width: 86vw;
+  min-height: 400px;
+  background: white;
+  margin: 2% auto;
+  display: none;
+}
+
+.bottom_punct {
+  width: 20vw;
+  display: inline-table;
+  margin: 1%;
+  text-align: center;
+}
+
+.bottom_punct h2, .bottom_punct p {text-align: center;}
+
+.bottom_punct img {width: 350px;}
+
+.bottom_review {
+  border-top: solid;
+  border-bottom: solid;
+}
+
+.bottom_review h1 {
+  padding-left: 30px;
+}
+</style>
+<h1>Поиск по сайту</h1>
+<p>
+  <input placeholder="Что будем искать ..." name="search_field" type="text">
+  <button onclick="search()">Click me</button>
+  <select name="SortBy[]">
+    <option selected value="DateUp">По дате(↓)</option>
+    <option value="DateDown">По дате(↑)</option>
+  </select>
+  </p>
+ <div id="result">
+
+ </div>
+<script>
+function search() {
+  var input = document.getElementsByName('search_field')[0].value;
+  var name = "NONAME"
+  $("#result").css("display", "block");
+  $.each(gon.articles, function( index, val ) {
+    name = "articles"
+    PushToResult(val, name);
+  });
+  $.each(gon.reviews, function( index, val ) {
+    name = "reviews"
+    PushToResult(val, name);
+  });
+  function PushToResult(val, name) {
+    if (val.html.search(input) == -1) {
+      result.innerHTML = `<h2 style="padding-bottom: 10%;">Совпадений не найдено(грусный смайлик)</h2>`
+    }
+    else {
+      var t = result.getElementsByTagName("h2")[0]
+      if (t.innerHTML == "Совпадений не найдено(грусный смайлик)") $( t ).remove();
+      if (name == "articles") {result.innerHTML += `<a onclick="location.href = window.location.protocol + '//' + window.location.host + '/?target1=fimg&target2=TandP&id=` + val.review_id + `';"><div class="bottom_punct">` + val.html + `</div></a>`}
+      else if (name == "reviews") {
+        result.innerHTML += `<a onclick="location.href = window.location.protocol + '//' + window.location.host + '/?target1=fimg&target2=TandP&id=` + val.id + `';"><div class="bottom_review">` + val.html + `</div><a>`
+        $( ".review_left" ).append( `<center><a id="downloadPDF" href="` + val.downloadLink + `" target="_blank" download="'>">Скачать PDF</a></center>` );
+      }
+    }
+  }
+}
+</script>

@@ -1,3 +1,60 @@
 // Place all the styles related to the main controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.bottom_review {
+  text-align: center;
+}
+
+.bottom_review h1 {
+  color: rgb(159, 28, 28);
+  padding-top: 1% !important;
+  padding-left: 70px;
+  text-align: left !important;
+}
+
+
+.bottom_review sub {
+  font-size: 20px;
+  display: block;
+  padding: 1% 3%;
+  text-align: left;
+}
+
+.bottom_review p {
+  padding: 2% 2% 5% !important;
+  font-size: 24px;
+}
+
+.review_left {
+    width: 40%;
+    box-shadow: 10px 0 10px -10px #000;
+}
+
+.review_right {
+  width: 50%;
+  padding: 1% 2%;
+}
+
+.review_left, .review_right {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.big {
+  width: 45%;
+}
+
+.review_left center {margin: 5%}
+
+#downloadPDF {
+  background: white;
+  border: 2px solid black;
+  padding: 1% 2%;
+  margin-bottom: 5%;
+  border-radius: 5px;
+  color: black;
+}
+#downloadPDF:hover {
+  background: black;
+  color: white;
+}
