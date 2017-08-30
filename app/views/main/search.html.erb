@@ -52,6 +52,7 @@ input {
 function search() {
   var input = document.getElementsByName('search_field')[0].value;
   var name = "NONAME"
+  alert(gon.articles);
   $("#result").css("display", "block");
   $.each(gon.articles, function( index, val ) {
     name = "articles"
