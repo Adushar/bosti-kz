@@ -66,7 +66,7 @@ function search() {
       result.innerHTML = `<h2 style="padding-bottom: 10%;">Совпадений не найдено(грусный смайлик)</h2>`
     }
     else {
-      var t = result.getElementsByTagName("h2")[0]
+      if (result.getElementsByTagName("h2")[0]) var t = result.getElementsByTagName("h2")[0]
       console.log(223);
       console.log(val);
       if (t.innerHTML == "Совпадений не найдено(грусный смайлик)") $( t ).remove();
