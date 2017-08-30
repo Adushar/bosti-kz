@@ -66,8 +66,9 @@ function search() {
       result.innerHTML = `<h2 style="padding-bottom: 10%;">Совпадений не найдено(грусный смайлик)</h2>`
     }
     else {
-      console.log(val);
       var t = result.getElementsByTagName("h2")[0]
+      console.log(227);
+      console.log(val);
       if (t.innerHTML == "Совпадений не найдено(грусный смайлик)") $( t ).remove();
       if (name == "articles") {result.innerHTML += `<a onclick="location.href = window.location.protocol + '//' + window.location.host + '/?target1=fimg&target2=TandP&id=` + val.review_id + `';"><div class="bottom_punct">` + val.html + `</div></a>`}
       else if (name == "reviews") {
