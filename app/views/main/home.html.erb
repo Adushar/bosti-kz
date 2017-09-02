@@ -530,7 +530,6 @@ function ThirdWave() {
 function ClickReview(IdOfTarget, ParentId) {
   if (IdOfTarget == null) {bottom_menu.innerHTML = `<h1 style="font-size: 200px;">404</h1>`}
   else {
-  bS();
   updateParameterByName("id", IdOfTarget);
   $('#bottom_menu').empty();
   $.getJSON('/', function(data1) {
@@ -606,9 +605,6 @@ function close_svg(){
   removeParameterByName("id");
 }
 //-----------------------------------------------
-function bS(){
-  $( "#bottom_menu" ).html(`<center><img src="/img/load.gif" style="position: absolute;top: 50%;"></center>`);
-}
 
 function getLast() {
   var targ1 = "#" + getParameterByName("target1", window.location.href);
@@ -627,7 +623,6 @@ function UpdateAjax(id) {
   $.ajax({
     url: '/',
     data: ({id: current_id}),
-    beforeSend: bS(),
     success: function (data) {
       //var arr = $.parseJSON(data);
         $.getJSON( '/', function( data ) {
