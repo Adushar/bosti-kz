@@ -589,7 +589,6 @@ function getPunct(articles, targets, reviews) {
           count += 1
             if (count <= 3) {
               getLast();
-
               bottom_menu.innerHTML += `<div class="bottom_punct"><img onclick="if ('` + val.htmltarget.toLowerCase() + `' == '` + val.htmltarget + `') ThirdWaveNames('` + val.htmltarget + `'); else {alert($('#` + val.htmltarget + `').html());}" src="http://numiz-mag.ru/image/catalog/blog/Infobox_info_icon.svg_.png" style="width: 42px;height: 42px;position: absolute;cursor: pointer;"/><a class="aON" onclick="ClickReview(`+ val.review_id + `,'` + TargOpen + `');">` + val.html + `</a></div>`;
               style.innerHTML += val.css.replace(/<br\s*\/?>/gi,'').replace(/<\/p>/gm, "").replace(/<\p>/gm, "");
               //$( ".bottom_punct" ).prepend( `` );
