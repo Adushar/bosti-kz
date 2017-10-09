@@ -92,22 +92,26 @@ function search() {
       }
       else if (name == "reviews") {
         result.innerHTML += `<a onclick="location.href = window.location.protocol + '//' + window.location.host + '/?target1=fimg&target2=TandP&id=` + val.id + `';"><div class="bottom_review">` + val.html + `</div><a>`;
-        PhotoSlider();
-        $( ".review_left" ).append( `<center><a id="downloadPDF" href="` + val.downloadLink + `" target="_blank" download="'>">Скачать PDF</a></center>` );
+        //PhotoSlider();
+        $( ".review_left:last" ).append( `<center><a id="downloadPDF" href="` + val.downloadLink + `" target="_blank" download="'>">Скачать PDF</a></center>` );
       }
     }
   }
 
+
   function PhotoSlider() {
     var myVals = [];
-    var FirstImg = $('#img-block img')[0].outerHTML;
+    var FirstImg = $('#img-block:last img')[0].outerHTML;
     var LoopKey = 0
     var LoopDrop = 0
     var val = 0
-    $('img','#img-block').map(function(){
+    myVals = [];
+    alert(myVals);
+    $('#img-block:last img').map(function(){
       myVals.push($(this).attr('src'));
     });
-    $("#img-block").html(FirstImg);
+    $("#img-block:last")[0].innerHTML = FirstImg;
+    alert(myVals);
     LoopDrop = myVals.length;
     setInterval(function() {
       val = myVals[LoopKey];
@@ -115,6 +119,9 @@ function search() {
       if (LoopKey == LoopDrop) LoopKey = 0;
       else LoopKey += 1;
   }, 3000);
+  }
+  function repeat() {
+
   }
 }
 </script>
