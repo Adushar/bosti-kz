@@ -11,10 +11,10 @@ default: &default
   timeout: 5000
 development:
     «: *default
-    database: bosti2_development
+    database: bosti_development
     test:
       «: *default
-      database: bosti2_test
+      database: bosti_test
       staging:
         url: <%= ENV['DATABASE_URL'] %>
         production:
