@@ -10,12 +10,14 @@ default: &default
   pool: 5
   timeout: 5000
 development:
+  adapter: sqlite3
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  timeout: 5000
+  database: db/development.sqlite3
+test:
     «: *default
-    database: bosti_development
-    test:
-      «: *default
-      database: bosti_test
-      staging:
+    database: bosti_test
+    staging:
+      url: <%= ENV['DATABASE_URL'] %>
+      production:
         url: <%= ENV['DATABASE_URL'] %>
-        production:
-          url: <%= ENV['DATABASE_URL'] %>
