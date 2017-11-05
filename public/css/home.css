@@ -1,0 +1,76 @@
+#main {
+  text-align: center;
+  height: 100vh;
+  padding-top: 40vh;
+}
+
+#main h1, h2 {
+    padding-top: 5%;
+}
+#home-t {
+  margin: auto;
+}
+
+figcaption {
+  text-align: center;
+  color: white;
+}
+
+#fimg {
+  height: 150px;
+  overflow-y: visible;
+}
+
+#mimg {margin: 0 5vw;}
+
+#mimg img {
+  color: #eee;
+  height: 120px;
+  margin-top: 0.625em;
+}
+
+#fimg img, #simg img {
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    border-radius: 100%;
+    cursor: pointer
+}
+
+#fimg, #simg, #mimg, #fsvg {
+  vertical-align: middle;
+  height: 150px;
+  overflow-y: visible;
+}
+
+#fimg, #simg, #mimg {
+  display: inline-block;
+}
+
+.dnone {
+  display: none;
+}
+
+/* Стили для пунктов меню */
+.lines {
+  padding-left: 0.8vw;
+}
+.lines div svg {
+  width: 30px;
+}
+.lines div svg, .lines div div {
+  display: inline-block;
+  vertical-align: top;
+}
+.lines div div a {
+  display: block;
+  text-align: left;
+  cursor: pointer;
+}
+.lines div div a:hover {
+  font-style: italic;
+}
+.TandP {
+  transform: translateY(-0.625em);
+}
+.fstitalic {
+  font-style: italic;
+}
