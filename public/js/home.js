@@ -1,8 +1,9 @@
 $(document).ready(function() {
+
   $( "#fimg" ).click(function() {
     $('#doktor-line-1').show();
     $("#mimg, #simg, #bottom_menu").hide();
-    $("#home-t").css({"margin": "0 5vw"});
+    $("#home-t").css({"margin": "0 0 2em 5vw"});
     // Изменение ссылки
     updateParameterByName("target1", this.id);
     removeParameterByName("target2");
@@ -11,14 +12,29 @@ $(document).ready(function() {
     removeParameterByName("id");
   });
   $( ".lines div a" ).click(function() {
-    $("." + this.parentElement.className + " a").removeClass("fstitalic");
+    var td = $(this).closest( "td" )
+    td.nextAll().hide();
+    td.nextAll().children().hide();
+    $("#" + this.closest( "td" ).id + " div div a").removeClass("fstitalic");
+    td.nextAll().find(".fstitalic").removeClass("fstitalic");
     $(this).addClass("fstitalic");
-    $("." + this.id.slice(1) + ", #doktor-line-" + this.id[0]).show();
+    $("." + this.id.slice(1)).show();
+    $("." + this.id.slice(1)).closest( "td" ).show();
+    cleanURL(this.id.substring(0,1));
+    updateParameterByName("target" + this.id.substring(0,1), this.id.slice(1));
   });
 });
 
 
 // Несколько функций по обработке ссылок
+function cleanURL(maxnum) {
+  var num = maxnum
+  while (num < 4 ) {
+    num++;
+    removeParameterByName("target" + num);
+  }
+  removeParameterByName("id");
+}
 function getParameterByName(name, url) {
   if (!url) url = window.location.href;
   name = name.replace(/[\[\]]/g, "\\$&");

@@ -1,6 +1,6 @@
 #main {
   text-align: center;
-  height: 100vh;
+  min-height: 100vh;
   padding-top: 40vh;
 }
 
@@ -53,6 +53,13 @@ figcaption {
 .lines {
   padding-left: 0.8vw;
 }
+.lines div {
+  height: 150px;
+}
+/* Исключение */
+#doktor-line-1 div {
+  height: auto;
+}
 .lines div svg {
   width: 30px;
 }
@@ -68,9 +75,9 @@ figcaption {
 .lines div div a:hover {
   font-style: italic;
 }
-.TandP {
-  transform: translateY(-0.625em);
-}
 .fstitalic {
   font-style: italic;
+}
+.TandP, .Arm, .Card, .Elec, .Rant {
+  transform: translateY(-1.3em);
 }
