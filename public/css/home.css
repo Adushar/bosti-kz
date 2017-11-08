@@ -81,3 +81,11 @@ figcaption {
 .TandP, .Arm, .Card, .Elec, .Rant {
   transform: translateY(-1.3em);
 }
+/* Нижнее меню */
+#bottom_menu {
+  width: 100%;
+  min-height: 300px;
+  margin-top: 2%;
+  background: #f8f8f8;
+  text-align: left;
+}

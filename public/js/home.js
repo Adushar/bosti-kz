@@ -1,7 +1,22 @@
 $(document).ready(function() {
-
+  var paramname = 'target1'
+  var saveURL = window.location.href;
+  window.setTimeout(function(){
+    if (getParameterByName("target1") && getParameterByName("target1").indexOf("img") != -1) {
+      $("#" + getParameterByName("target1")).trigger("click");
+      while (getParameterByName(paramname) != null) {
+        var number = (Number(paramname.slice(-1)) + 1);
+        paramname = "target" + number;
+        $('#' + paramname.slice(-1) + getParameterByName(paramname, saveURL)).click();
+      }
+    }
+  }, 100);
   $( "#fimg" ).click(function() {
+    $("#fimg").nextAll().hide();
+    $("#fimg").nextAll().children().hide();
     $('#doktor-line-1').show();
+    $('#doktor-line-1 div').show();
+    $(".fstitalic").removeClass("fstitalic");
     $("#mimg, #simg, #bottom_menu").hide();
     $("#home-t").css({"margin": "0 0 2em 5vw"});
     // Изменение ссылки
@@ -20,6 +35,7 @@ $(document).ready(function() {
     $(this).addClass("fstitalic");
     $("." + this.id.slice(1)).show();
     $("." + this.id.slice(1)).closest( "td" ).show();
+    bottom_menu(this.id.slice(1));
     cleanURL(this.id.substring(0,1));
     updateParameterByName("target" + this.id.substring(0,1), this.id.slice(1));
   });
@@ -34,6 +50,10 @@ function cleanURL(maxnum) {
     removeParameterByName("target" + num);
   }
   removeParameterByName("id");
+}
+function bottom_menu(id) {
+  $("#bottom_menu").show();
+  alert(id);
 }
 function getParameterByName(name, url) {
   if (!url) url = window.location.href;
