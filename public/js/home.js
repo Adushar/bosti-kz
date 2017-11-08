@@ -18,7 +18,7 @@ $(document).ready(function() {
     $('#doktor-line-1 div').show();
     $(".fstitalic").removeClass("fstitalic");
     $("#mimg, #simg, #bottom_menu").hide();
-    $("#home-t").css({"margin": "0 0 2em 5vw"});
+    $("#home-t").css({"margin": "0 0 4em 5vw"});
     // Изменение ссылки
     updateParameterByName("target1", this.id);
     removeParameterByName("target2");
