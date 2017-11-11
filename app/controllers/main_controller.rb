@@ -1,9 +1,10 @@
 class MainController < ApplicationController
   def home
     @articles = Article.all.order(:updated_at)
+    @reviews = Review.all.order(:updated_at)
     articles = @articles.where(params[:id])
     gon.articles = Article.order(:updated_at)
-    @reviews = Review.all.order(:updated_at)
+    gon.review = Review.all.order(:updated_at)
     respond_to do |format|
       format.html
       format.json {

@@ -81,11 +81,78 @@ figcaption {
 .TandP, .Arm, .Card, .Elec, .Rant {
   transform: translateY(-1.3em);
 }
-/* Нижнее меню */
-#bottom_menu {
+/* Стили нижнего блока и блока продукта */
+#bottom_menu, #bottom_product {
   width: 100%;
   min-height: 300px;
   margin-top: 2%;
-  background: #f8f8f8;
+  background: #fff;
   text-align: left;
+}
+#bottom_menu h1 {
+  padding: 2%;
+}
+/* Стили только блока продукта */
+#bottom_product a, #bottom_product h1 {
+  display: inline-block;
+}
+#bottom_product a svg {margin: 2%;}
+#bottom_product a {padding-left: 1%;}
+#bottom_product h1 {
+  text-align: left;
+  padding: 2% 3%;
+  color: rgb(159, 28, 28);
+}
+#bottom_product h3 {
+  text-align: center;
+  padding: 2%;
+}
+#bottom_product sub {
+  display: block;
+  padding: 0 2%;
+  text-align: left;
+  font-size: 20px;
+  width: 40%;
+}
+.bottom_review {
+  text-align: center;
+}
+.review_left {
+  width: 49%;
+}
+.review_right {
+  width: 50%;
+  padding: 1% 2%;
+  box-shadow: -5px 0 5px -5px rgba(136, 133, 133, 0.83);
+}
+.review_right img {
+  width: 45%;
+}
+.review_left, .review_right {
+  display: inline-block;
+  vertical-align: top;
+  padding: 0 2%;
+  margin-bottom: 2%;
+}
+#downloadPDF {
+  background: white;
+  border: 2px solid black;
+  padding: 1%;
+  margin: 5% auto;
+  border-radius: 5px;
+  color: black;
+}
+#downloadPDF:hover {
+  background: black;
+  color: white;
+}
+/* Пункты нижнего блока */
+.bottom_punct {
+  width: 30vw;
+  display: inline-table;
+  margin: 1%;
+  text-align: center;
+}
+.bottom_punct img {
+  width: 20vw;
 }
