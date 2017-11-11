@@ -78,26 +78,26 @@ function bottom_punct(id) {
       $('#bottom_product a').nextAll().remove();
       //Добавляем код на страницу
       $("#bottom_product").append(value.html);
-      $(".review_left").append(`<center><a id="downloadPDF" target="_blank" href="` + value.downloadLink + `">Скачать PDF</a></center>`);
+      $(".review_left").append('<center><a id="downloadPDF" target="_blank" href="' + value.downloadLink + '">Скачать PDF</a></center>');
       //Опять фильтруем значения для "Мы также рекомендуем" и добавляем надпись
-      $("#bottom_product").append(`<h3>Мы также рекомендуем в этом розделе:</h3>`);
+      $("#bottom_product").append('<h3>Мы также рекомендуем в этом розделе:</h3>');
       $.each(gon.articles, function(index2, value2) {
         if (index2 < 4 && $.inArray(value2.id.toString(), value.recomend.split(", ")) != -1) {
-          $("#bottom_product").append(`<div id=`+ value2.review_id +` class="bottom_punct" onclick="bottom_punct(this.id)">` + value2.html + `</div>`);
+          $("#bottom_product").append('<div id='+ value2.review_id +' class="bottom_punct" onclick="bottom_punct(this.id)">' + value2.html + '</div>');
         }
       });
       //Филтруем значения для "В других разделах продуктов:"(последние по дате обновления)
-      $("#bottom_product").append(`<h3>В других разделах продуктов:</h3>`);
+      $("#bottom_product").append('<h3>В других разделах продуктов:</h3>');
       $.each(gon.articles.reverse(), function(index2, value2) {
         if (NumOfRuns < 4 && value2.review_id != value.id) {
           NumOfRuns++
-          $("#bottom_product").append(`<div id=`+ value2.review_id +` class="bottom_punct" onclick="bottom_punct(this.id)">` + value2.html + `</div>`);
+          $("#bottom_product").append('<div id='+ value2.review_id +' class="bottom_punct" onclick="bottom_punct(this.id)">' + value2.html + '</div>');
         }
       });
     }
     else if ((value.id != id || value.html == "") && index == 1) {
       $('#bottom_product a').nextAll().remove();
-      $("#bottom_product").append(`<h1> </h1><h2 style="font-size: 150px;">404</h2>`);
+      $("#bottom_product").append('<h1> </h1><h2 style="font-size: 150px;">404</h2>');
     }
   });
 };
@@ -107,7 +107,7 @@ function bottom_menu(id) {
   $("#bottom_menu").html("<h1>Продукты</h1>");
   $.each(gon.articles.reverse(), function(index, value) {
     if (value.htmltarget == id) {
-      $("#bottom_menu").append(`<div id=`+ value.review_id +` class="bottom_punct" onclick="bottom_punct(this.id)">` + value.html + `</div>`);
+      $("#bottom_menu").append('<div id='+ value.review_id +' class="bottom_punct" onclick="bottom_punct(this.id)">' + value.html + '</div>');
     }
   });
 }
