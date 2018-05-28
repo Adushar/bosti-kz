@@ -36,25 +36,36 @@ $(document).ready(function() {
     $("#mimg, #simg, #bottom_menu").hide();
     $("#home-t").css({"margin": "0 0 4em 5vw"});
     // Изменение ссылки
+    cleanURL(0);
     updateParameterByName("target1", this.id);
-    removeParameterByName("target2");
-    removeParameterByName("target3");
-    removeParameterByName("target4");
-    removeParameterByName("id");
   });
+  $("#simg").click(function() {
+    $("#patient-line-1").show();
+    $("#mimg, #fimg, #bottom_menu").hide();
+    $("#home-t").css({"margin": "auto 5vw 4em auto"});
+    $(".fstitalic").removeClass("fstitalic");
+    cleanURL(0);
+    updateParameterByName("target1", this.id);
+  });
+  //Универсальный оброботчик
   $( ".lines div a" ).click(function() {
-    var td = $(this).closest( "td" )
+    var td = $(this).closest( "td" );
+    var sliced = this.id.slice(1)
+    var id_num = Number(td[0].id[td[0].id.length -1]) + 1;
+    while ($("#" + td[0].id.slice(0,-1) + id_num).html()) {
+      var temp_targ = "#" + td[0].id.slice(0,-1) + id_num
+      $(temp_targ + ", " + temp_targ + " > *").hide();
+      id_num++;
+    }
     $("#bottom_product").hide();
-    td.nextAll().hide();
-    td.nextAll().children().hide();
-    $("#" + this.closest( "td" ).id + " div div a").removeClass("fstitalic");
+    $("#" + td.id + " div div a").removeClass("fstitalic");
     td.nextAll().find(".fstitalic").removeClass("fstitalic");
     $(this).addClass("fstitalic");
-    $("." + this.id.slice(1)).show();
-    $("." + this.id.slice(1)).closest( "td" ).show();
-    bottom_menu(this.id.slice(1));
+    $("." + sliced).show();
+    $("." + sliced).closest( "td" ).show();
+    bottom_menu(sliced);
     cleanURL(this.id.substring(0,1));
-    updateParameterByName("target" + this.id.substring(0,1), this.id.slice(1));
+    updateParameterByName("target" + this.id.substring(0,1), sliced);
   });
   //При закритии bottom_product
   $( "#bottom_product a" ).click(function() {

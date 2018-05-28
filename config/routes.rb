@@ -10,4 +10,5 @@ Rails.application.routes.draw do
   get '/contact', to: 'main#contact'
   get '/partners', to: 'main#partners'
   get '/search', to: 'main#search'
+  get '/control', to: 'control#index'
 end

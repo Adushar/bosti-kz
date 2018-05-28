@@ -16,11 +16,6 @@ figcaption {
   color: white;
 }
 
-#fimg {
-  height: 150px;
-  overflow-y: visible;
-}
-
 #mimg {margin: 0 5vw;}
 
 #mimg img {
@@ -51,7 +46,7 @@ figcaption {
 
 /* Стили для пунктов меню */
 .lines {
-  padding-left: 0.8vw;
+  padding: 0 0.8vw;
 }
 .lines div {
   height: 150px;
@@ -75,6 +70,7 @@ figcaption {
 .lines div div a:hover {
   font-style: italic;
 }
+.simg, .simg div {height: auto !important;}
 .fstitalic {
   font-style: italic;
 }
